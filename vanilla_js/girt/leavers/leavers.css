@@ -1,0 +1,78 @@
+body, html{
+    height: 100%;
+    margin: 0;}
+
+.laximg-1, .laximg-2, .laximg-3, .laximg-3_5, .laximg-4, .laximg-5{
+    position: relative;
+    opacity: 0.8;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;}
+
+.laximg-1{
+    background-image: url("../resources/leavers_24/Clifford_Hong.png");
+    min-height: 110vh;}
+
+.laximg-2{
+    background-image: url("../resources/leavers_24/Nvedita_Bose.webp");
+    min-height: 110vh;}
+
+.laximg-3{
+    background-image: url("../resources/b-one.png");
+    min-height: 110vh;}
+
+.laximg-4{
+    background-image: url("../resources/g-two.png");
+    min-height: 110vh;}
+
+.laximg-5{
+    background-image:url("../resources/bachi.jpg");
+    min-height: 110vh;}
+
+.laximg-3_5{
+    background-image: url("../resources/cal_two.png");
+    min-height: 110vh;
+}
+
+.caption{
+    position: absolute;
+    left: 0.5%;
+    top: 5%;
+    text-align: left;
+    background-color: rgba(0,0,0,0.4);}
+
+.caption span.border{
+    background-color: transparent;
+    color: white;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: none;
+    font-size: 25px;
+    letter-spacing: 4px;
+    opacity:1;}
+
+.interlude{
+    color: #8E8027;
+    background-color: black;
+    text-align: center;
+    font-size: larger;
+    font-style: italic;
+    font-family:'Trebuchet MS', 
+    'Lucida Grande', Arial, serif;
+    padding: 3% 2%;
+    min-height: 14vh;
+    letter-spacing: 2px;
+    text-align: justify;}
+
+.interlude:nth-child(1){
+    padding-top: 6vh;
+    padding-bottom: 2vh;
+}
+
+
+@media screen and (max-width: 500px) {
+    .laximg-1, .laximg-2, .laximg-3, .laximg-3_5, .laximg-4, .laximg-5{height: 80vh;}
+    .caption span.border{font-size: 20px;}
+    .laximg-1{background-attachment: initial;}
+}

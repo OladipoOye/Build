@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questions</title>
+    <link rel="stylesheet" type="text/css" href="../transitions.css">
+    <link rel="stylesheet" type="text/css" href="questions.css">
+</head>
+<body>
+    <div style="font-family: corben; font-style: italic;" id="sideNav" class="sidenav">
+        <a href="../calendar/index.html">Cal</a>
+        <a href="../about/index.html">About</a>
+        <a href="../committee/index.html">Committee</a>
+        <a href="#">Qs</a>
+        <a href="../leavers/index.html">Leavers</a>
+        <a href="../bank/index.html">Bank</a>
+    </div>
+
+    <nav>
+        <div class="container">
+            <a href="../index.html" style="text-decoration: none; cursor: pointer;">
+                <h3 style="font-family: orbitron;">GirtonEngSoc</h3>
+            </a>
+
+            <div style="font-family: corben;" class="menu">
+                <a href="#">Cal</a>
+                <a href="../about/index.html">About</a>
+                <a href="../committee/index.html">Committee</a>
+                <a href="#" class="is-active">Qs</a>
+                <a href="../leavers/index.html" class="">Leavers</a>
+                <a href="../bank/index.html">Bank</a>
+            </div>
+
+            <button class="i is-active">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div id="Modal_box" class="modal">
+            <!-- The Close Button -->
+                <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+                <div class="modal-content" id="modal_img"></div>
+            <!-- Modal Caption (Image Text) -->
+                <div style="font-family: bookman; font-style: italic;" id="caption"></div>
+        </div>
+
+        <h1 style="margin-top: 16vh; text-align:center;
+        text-decoration:double underline; font-family: corben;">
+            The archives
+        </h1>
+        <div class="spanner">
+            <span id="first"></span>
+            <h2 style="font-family: orbitron;">1st year</h2>
+        </div>
+        <div class="spanner">
+            <span id="second"></span>
+            <h2 style="font-family: orbitron;">2nd year</h2>
+        </div>
+        <div class="spanner">
+            <span id="third"></span>
+            <h2 style="font-family: orbitron;">3rd year</h2>
+        </div>
+        <div class="spanner">
+            <span id="fourth"></span>
+            <h2 style="font-family: orbitron;">4th year</h2>
+        </div>
+        <div class="spanner">
+            <span id="fifth"></span>
+            <h2 style="font-family: orbitron;">Chem Eng</h2>
+        </div>
+        <div class="spanner">
+            <span id="sixth"></span>
+            <h2 style="font-family: orbitron;">Post grad</h2>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="questions.js"></script>
+    <script type="text/javascript" src="../main.js"></script>
+</body>
+</html>

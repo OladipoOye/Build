@@ -1,0 +1,126 @@
+body, html{
+    margin: 0;
+    height: 100%;}
+
+main{
+    background-image: url("../resources/g-one.png");
+    display: flex;
+    flex-direction: column;
+    color: white;
+    height: 100%;}
+
+.spanner{
+    display: inline-flex;
+    flex-direction: row;
+    text-decoration: double line-through;
+    margin-top: 4vh;
+    cursor: pointer;
+    max-width: 95vw;
+    transition: 0.2s ease;}
+
+.spanner span{
+    height: 6vh;
+    margin-left: 6vw;
+    position: relative;
+    vertical-align: middle;
+    background-color: white;
+    flex-grow: 1;
+    flex-shrink: 2;
+    border-radius: 24px;
+    transition: 0.5s;}
+
+.spanner h2{
+    margin-top: 1vh;
+    flex-grow: 4;
+    flex-shrink: 1;
+    margin-bottom: 0;
+    padding: 0;}
+
+#first{
+    width: 10vw;}
+
+#second{
+    width: 20vw;}
+
+#third{
+    width: 30vw;}
+    
+#fourth{
+    width: 40vw;}
+    
+#fifth{
+    width: 50vw;}
+    
+#sixth{
+    width: 60vw;}
+
+/* The modal*/
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 3; /* Sit on top */
+    padding-top: 130px; /* Location of the box */
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */}
+
+/* Modal Content (Image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    text-align: center;
+    background-image: url("../resources/b-one.png");
+    min-height: 60vh;
+    max-height: 65vh;
+    max-width: 85vw;}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+    margin: auto;
+    display: block;
+    max-width: 80vw;
+    text-align: center;
+    color: #ccc;
+    padding-top: 10px;
+    font-size: 40px;
+    height: 150px;}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;} 
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;}
+
+.close:hover,
+.close:focus {
+    color: #427D4F;
+    text-decoration: none;
+    cursor: pointer;}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}}
+    
+
+.spanner:hover{
+    text-decoration: none;
+    transform: scale(1.05, 1.25);}
+
+@media only screen and (max-width: 500px){
+    .body{font-size: small;}
+    .spanner h2{font-size: 12px; margin-top: 2vh;}
+    .modal-content {width: 90%;}}

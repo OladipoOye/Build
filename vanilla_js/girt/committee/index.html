@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Committee</title>
+    <link rel="stylesheet"  type="text/css" href="committee.css">
+    <link rel="stylesheet"  type="text/css" href="../transitions.css">
+</head>
+<body>
+    <!--<div class="transition transition-2 is-active"></div>-->
+    <div style="font-family: corben; font-style: italic;" id="sideNav" class="sidenav">
+        <a href="../calendar/index.html">Cal</a>
+        <a href="../about/index.html">About</a>
+        <a href="#">Committee</a>
+        <a href="../questions/index.html">Qs</a>
+        <a href="../leavers/index.html">Leavers</a>
+        <a href="../bank/index.html">Bank</a>
+    </div>
+    
+    <nav>
+        <div class="container">
+            <a href="../index.html" style="text-decoration: none; cursor: pointer;">
+                <h3 style="font-family: orbitron;">GirtonEngSoc</h3>
+            </a>
+
+            <div style="font-family: corben;" class="menu">
+                <a href="../calendar/index.html">Cal</a>
+                <a href="../about/index.html">About</a>
+                <a href="#" class="is-active">Committee</a>
+                <a href="../questions/index.html">Qs</a>
+                <a href="../leavers/index.html">Leavers</a>
+                <a href="../bank/index.html">Bank</a>
+            </div>
+
+            <button class="i is-active">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <main id="main">
+        <div class="slideshow-container">
+
+            <!-- Full-width images with number and caption text -->
+            <div class="mySlides fade">
+                <img src="../resources/E.jpg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Elisha Oyewole<br><br>
+                    Massive time waster<br>
+                    and math enthusiast,<br>
+                    but hates maths. <br>
+                    Prime person to blame
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">
+                    President
+                </div>
+            </div>
+          
+            <div class="mySlides fade">
+                <img src="../resources/amy.jpeg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Amy Fogarty<br><br>
+                    Prime coding suspect
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">Secretary</div>
+            </div>
+          
+            <div class="mySlides fade">
+                <img src="../resources/IMG_6343.jpg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Tom Downey<br><br>
+                    100% definitely,<br>
+                    almost a third year.
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">Treasurer</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="../resources/faus.jpeg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Faustina Das<br><br>
+                    100% definitely,<br>
+                    almost attends lectures
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">IT</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="../resources/tomt.jpeg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Tom Truetenare<br><br>
+                    A class act,<br>
+                    just without the class,<br>
+                    and the act as well, probably
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">Alumni</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="../resources/rach.jpeg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Rachel Wald<br><br>
+                    A time waster alike the pres,<br>
+                    except,<br>
+                    she wastes her own time
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">Media</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img src="../resources/nat.jpeg">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    Natalie McEvoy<br><br>
+                    Our newest addition to the committee<br>
+                    and, apparently at least,<br>
+                    trusted with our media content.<br>
+                </div>
+                <div style="font-family: orbitron; font-size:larger" class="top-right">Media</div>
+            </div>
+
+            <div class="mySlides fade">
+                <img class="lower" src="../resources/b-one.png">
+                <div style="font-family: orbitron; font-size:larger" class="centered">
+                    But we must not forget...
+                </div>
+            </div>
+
+            <div class="mySlides fade">
+                <img class="lower" src="../resources/sam2.JPG">
+                <div style="font-family: bookman; font-style: italic;" class="top-left">
+                    One of the few men<br>
+                    brave enough,<br>
+                    to supervise mechanics<br>
+                </div>
+                <div style="font-family: orbitron; font-size:larger;" class="top-right">Samuel Grimshaw</div>
+            </div>
+          
+            <!-- Next and previous buttons -->
+              <a class="prev" onclick="plusSlides(-1)">&#10094;</a> 
+              <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+          
+        <br>
+        <!--
+        <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+            <span class="dot" onclick="currentSlide(5)"></span>
+            <span class="dot" onclick="currentSlide(6)"></span>
+            <span class="dot" onclick="currentSlide(7)"></span>
+            <span class="dot" onclick="currentSlide(8)"></span>
+        </div>
+    -->
+    </main>
+    <script src="committee.js"></script>
+    <script src="../main.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+body, html{
+    margin: 0;
+    height: 100%;
+    background-image: url("../resources/g-two.png");
+    color: white;}
+
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    align-items: space-between;
+    justify-content: space-around;}
+
+.flex div{
+    min-width: 30%;
+    height: 40vh;
+    background-size: cover;
+    text-align: center;
+    background-position: center;
+    border: 4px solid white;
+    border-radius: 8px;}
+
+.flex div:hover{
+    text-transform: uppercase;
+    font-weight: bold;}
+
+.centre{
+    position: relative;
+    color: white;
+    text-decoration: underline;
+    text-align: center;
+    top: 20%;}
+
+h1, p{
+    text-align: center;}
+
+img{
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;}
+
+#cal{background-image: url("../resources/cal_two.png");
+    transition: 0.75s ease;}
+#cal:hover{background-image: url("../resources/b-two.png");}
+
+#about{background-image: url("../resources/arrowd.png");
+    transition: 0.75s ease;}
+#about:hover{background-image: url("../resources/b-two.png");}
+
+#committee{background-image: url("../resources/com.png");
+    transition: 0.75s ease;}
+#committee:hover{background-image: url("../resources/b-two.png");}
+
+#fellows{background-image: url("../resources/sam.png");
+    transition: 0.75s ease;}
+#fellows:hover{background-image: url("../resources/b-two.png");}
+
+#qs{background-image: url("../resources/question.jpg");
+    transition: 0.75s ease;}
+#qs:hover{background-image: url("../resources/b-two.png");}
+
+#leavers{background-image: url("../resources/bond.png");
+    transition: 0.75s ease;}
+#leavers:hover{background-image: url("../resources/b-two.png");}
+
+.content{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100vh;
+    justify-content: space-around;
+    margin-top: 10vh;}
+
+.content div{
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 10%;
+    font-size: larger;}
+
+#geng{
+    text-align: center;
+    text-decoration: underline;
+    padding-top: 5vh;}
+
+#geng:hover{
+    text-decoration: line-through;}
+
+@media screen and (max-width: 800px){
+    .content{height: 80vh;}
+    .content div{padding-top: 0;}
+    .content{font-size: 12px;}
+    .flex div{height: 30vh;}}
+
+
+@media all and (max-width: 500px){
+    content{font-size: 8px};
+}

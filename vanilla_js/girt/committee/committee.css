@@ -1,0 +1,115 @@
+* {box-sizing:border-box}
+
+html, body{
+    margin: 0;
+    height: 100%;}
+
+main{
+    background-color: rgba(0, 0, 0, 0.95);
+    height: 100%;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 100%;
+  height: 95vh;
+  position: relative;
+  margin: auto;}
+
+/* Hide the images by default */
+
+.mySlides img{
+    max-height: 90vh;
+    object-fit: contain;
+    padding-top: 4vh;
+    width: 100%;}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: #427D4F;}
+
+/* Caption text */
+.top-left {
+  font-weight: bold;
+  color: #f2f2f2;
+  font-size: 15px;
+  position: absolute;
+  left: 4vw;
+  top: 8vh;
+  text-align: left;}
+
+.top-right{
+  font-weight: bold;
+  color: #f2f2f2;
+  font-size: 15px;
+  position: absolute;
+  right: 4vw;
+  top: 8vh;
+  width: auto;
+  text-align: right;}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 60px;
+  font-family:'Corben', 'Trebuchet MS', 'Orbitron', 'Times', 'Times New Roman', Times, serif;
+  text-align: center;
+  cursor: pointer;}  
+
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: black;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;}
+
+.active, .dot:hover {
+  background-color: white;}
+
+/* Fading animation
+.fade {
+  animation-name: fade;
+  animation-duration: 1.6s;}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}}*/
+
+@media screen and (max-width: 1000px) {
+    .top-left, .top-right{font-size: 16px; top: 12vh;}
+    .prev, .next{top: 50%;}
+    .slideshow-container{padding-top: 8vh;}
+    .mySlides img{opacity: 0.7; object-fit: cover;}
+    .lower{margin-top: 16vh;}
+     body{font-size: small;}}
+
+@media screen and (max-width: 500px) {
+    .centered{top: 44vh}
+    .mySlides img{max-height: 80vh;}} 

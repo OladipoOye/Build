@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" type="text/css" href="cal.css">
+    <link rel="stylesheet" type="text/css" href="../transitions.css">
+</head>
+<body>
+    <div id="sideNav" class="sidenav">
+        <a href="#">Cal</a>
+        <a href="../about/index.html">About</a>
+        <a href="../committee/index.html">Committee</a>
+        <a href="../questions/index.html">Qs</a>
+        <a href="../leavers/index.html">Leavers</a>
+        <a href="../bank/index.html">Bank</a>
+    </div>
+    
+    <nav>
+        <div class="container">
+            <a href="../index.html" style="text-decoration: none; cursor: pointer;">
+                <h3 style="font-family: orbitron;">GirtonEngSoc</h3>
+            </a>
+
+            <div style="font-family: corben;" class="menu">
+                <a href="#" class="is-active">Cal</a>
+                <a href="../about/index.html">About</a>
+                <a href="../committee/index.html">Committee</a>
+                <a href="../questions/index.html">Qs</a>
+                <a href="../leavers/index.html">Leavers</a>
+                <a href="../bank/index.html">Bank</a>
+            </div>
+
+            <button class="i is-active">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    <main id="main">
+
+        <div id="Modal_box" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal_img">
+            <!-- Modal Caption (Image Text) -->
+            <div style="font-family: bookman; font-style:italic;" id="caption"></div>
+        </div>
+    <!--    <h2 style="margin: 0;"> Could have some teext at the top, 
+            to not just<br>
+            well, <br>
+            make it look weird. 
+        </h2> -->
+        <div class="calendar">
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family:orbitron;" onclick="plusMonth(-1)"><<<</a>  October  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <div class="row days">
+                    <span>6</span><span>7</span><span id="ms">8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+                </div>
+                <div class="row days">
+                    <span>13</span><span>14</span><span>15</span><span id="fw">16</span><span>17</span><span>18</span><span>19</span>
+                </div>
+                <div class="row days">
+                    <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
+                </div>
+                <div class="row days">
+                    <span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>..</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  November  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>..</span><span>..</span><span>1</span><span>2</span><span>3</span>
+                </div>
+                <div class="row days"><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+                <div class="row days">
+                    <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+                </div>
+                <div class="row days">
+                    <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+               </div>
+                <div class="ronueriozjw days">
+                    <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  December  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span id="me">6</span><span>7</span>
+                </div>
+                <div class="row days">
+                    <span id="ch">8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                </div>
+                <div class="row days">
+                    <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+                </div>
+                <div class="row days">
+                    <span>22</span><span>23</span><span>24</span><span id="mas">25</span><span>26</span><span>27</span><span>28</span>
+                </div>
+                <div class="row days">
+                    <span>29</span><span>30</span><span>31</span><span>..</span><span>..</span><span>..</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  January  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>..</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                </div>
+                <div class="row days">
+                    <span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span>
+                </div>
+                <div class="row days">
+                    <span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+                </div>
+                <div class="row days">
+                    <span>19</span><span>20</span><span id="ls">21</span><span>22</span><span>23</span><span>24</span><span>25</span>
+                </div>
+                <div class="row days">
+                    <span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  February  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span> <span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>..</span><span>..</span><span>..</span><span>..</span><span>1</span>
+                </div>
+                <div class="row days">
+                    <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                </div>
+                <div class="row days">
+                    <span>9</span><span>10</span><span>11</span><span>12</span> <span>13</span><span>14</span><span>15</span>
+                </div>
+                <div class="row days">
+                    <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+                </div>
+                <div class="row days">
+                    <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  March  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+                </div>
+                <div class="row days">
+                    <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                </div>
+                <div class="row days">
+                    <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span id="le">21</span>
+                </div>
+                <div class="row days">
+                    <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+                </div>
+                <div class="row days">
+                    <span>29</span><span>30</span><span>31</span><span>..</span><span>..</span><span>..</span><span>..</span>
+                </div>
+            </div>
+
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  April  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+                </div>
+                <div class="row days">
+                    <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span>
+                </div>
+                <div class="row days">
+                    <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+                </div>
+                <div class="row days">
+                    <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
+                </div>
+                <div class="row days">
+                    <span>27</span><span>28</span><span id="es">29</span><span>30</span><span>..</span> <span>..</span><span>..</span>
+                </div>
+            </div>
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="cursor: pointer; font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  May  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>..</span><span>..</span><span>..</span><span>..</span><span>1</span><span>2</span><span>3</span>
+                </div>
+                <div class="row days">
+                    <span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+                </div>
+                <div class="row days">
+                    <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+                </div>
+                <div class="row days">
+                    <span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span><span>24</span>
+                </div>
+                <div class="row days">
+                    <span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span><span>31</span>
+                </div>
+            </div>
+            <div class="fullDiv">
+                <h1>
+                    <a class="prev" style="font-family: orbitron;" onclick="plusMonth(-1)"><<<</a>  June  <a class="next" style="font-family: orbitron;" onclick="plusMonth(1)">>>></a><br>
+                    <div class="row" style="padding-top: 3vh; height: 40%; font-family: corben;">
+                        <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+                    </div>
+                </h1>
+                <div class="row days">
+                    <span>1</span><span>2</span> <span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+                </div>
+                <div class="row days">
+                    <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                </div>
+                <div class="row days">
+                    <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span id="ee">20</span><span>21</span>
+                </div>
+                <div class="row days">
+                    <span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+                </div>
+                <div class="row days">
+                    <span>29</span><span>30</span><span>..</span><span>..</span><span>..</span><span>..</span><span>..</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="text/javascript" src="cal.js"></script>
+    <script type="text/javascript" src="../main.js"></script>
+    
+</body>
+</html>

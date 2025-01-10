@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="transitions.css">
+    <link rel="icon" type="image/png" href="./resources/logo_one.png">
+
+</head>
+<body>
+    <!--<div class="transition transition_2 is-active"></div>-->
+
+    <div id="sideNav" style="font-family: corben;" class="sidenav">
+        <a href="./calendar/index.html">Cal</a>
+        <a href="./about/index.html">About.com</a>
+        <a href="./committee/index.html">Committee</a>
+        <a href="./questions/index.html">Qs</a>
+        <a href="./leavers/index.html">Leavers</a>
+        <a href="../bank/index.html">Bank</a>
+    </div>
+    <nav>
+        <div class="container">
+            <h3 style="font-family: orbitron;">GirtonEngSoc</h3>
+
+            <div style="font-family: corben;" class="menu">
+                <a href="./calendar/index.html">Cal</a>
+                <a href="./about/index.html">About</a>
+                <a href="./committee/index.html">Committee</a>
+                <a href="./questions/index.html">Qs</a>
+                <a href="./leavers/index.html">Leavers</a>
+                <a href="../bank/index.html">Bank</a>
+            </div>
+
+            <button class="i is-active">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+    
+    <main id="main">
+    
+        <div id="Modal_box" class="modal">
+        <!-- The Close Button -->
+            <span class="close">&times;</span>
+        <!-- Modal Content (The Image) -->
+            <img class="modal-content" id="modal_img">
+        <!-- Modal Caption (Image Text) -->
+            <div style="font-family: bookman; font-style: italic;" id="caption"></div>
+        </div>
+
+        <div class="bg-img">
+            <img id="ui" src="./resources/b-one.png" style="height:100vh; width:100vw; opacity: 0.9;">
+            <div class="bottom-left">
+                <img src="./resources/logo_one.png" class="small_modal" id="logo">
+            </div>
+            <div style="font-family: corben;" class="bottom-right">
+                Get in touch- <br>
+                Email: <br>
+                engineering-society@girton.cam.ac.uk
+                <br>
+                Instagram: Dropping soon<br>
+            </div>
+            <div class="centered"><h3 style="font-family: orbitron; letter-spacing: 4px" id="girt">The Girton Engineering Society</h3></div>
+        </div>
+    </main>
+    <script src="main.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
