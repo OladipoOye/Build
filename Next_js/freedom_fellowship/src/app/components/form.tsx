@@ -1,5 +1,5 @@
 import { revalidatePath } from "next/cache";
-import styles from "../ui/form.module.css"
+import styles from "../ui/form.module.css";
 
 export default async function Prayers() {
     const response = await fetch("https://6781564085151f714b0a5956.mockapi.io/usr");
@@ -25,13 +25,13 @@ export default async function Prayers() {
         <>
             <form className={styles.formStyle} action={addUser}>
                 <label className={styles.labelStyle} >Name (optional):</label>
-                <input className={styles.sInputStyle} name="user_name" />
+                <input className={styles.sInputStyle} name="name" />
           
                 <label className={styles.labelStyle} >Email (optional):</label>
-                <input className={styles.sInputStyle} name="user_email" />
+                <input className={styles.sInputStyle} name="email" />
           
                 <label className={styles.labelStyle}>Prayer</label>
-                <textarea className={styles.lInputStyle} name="message" required/>
+                <textarea className={styles.lInputStyle} name="prayer" required/>
           
                 <input className={styles.buttonStyle} type="submit" value="Send" />
             </form>
