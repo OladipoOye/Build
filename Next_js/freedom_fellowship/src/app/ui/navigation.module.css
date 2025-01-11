@@ -102,7 +102,7 @@
     background-color: rgba(0,0,0, 0.5);
     transition: 0.25s;}
 
-.sidenav a{
+.sidenav_a{
     padding-top: 4vh;
     padding-bottom: 4vh;
     padding-left: 4px;
@@ -116,7 +116,7 @@
     text-decoration: double underline;
     text-align: center;}
 
-.sidenav a:hover{
+.sidenav_a:hover{
     color: dimgrey;
     background-color: whitesmoke;}
     
@@ -193,7 +193,7 @@
     .sidenav {
         padding: 30px 0px;
         }
-    .sidenav a {font-size: 18px;}
+    .sidenav_a {font-size: 18px;}
     .container h2{padding-left: 6vw;}
     .hidden {
         opacity: 1;
