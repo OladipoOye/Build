@@ -12,6 +12,10 @@ export default function Quiz(props) {
     
     const list = props.q;
     const name = props.name;
+    const que = props.opt1;
+    const ans = props.opt2;
+    console.log('que, ans is', que, ans);
+    //console.log('list is', list)
     
     //for the random questions
     const randomize = () => {
@@ -29,14 +33,16 @@ export default function Quiz(props) {
     const handleSubmit = evt => {
         evt.preventDefault();
 
-        if (input.toLowerCase() === list[current][1]) {
+        if (input.toLowerCase() === list[current][ans]) {
             setStreak((prev) => prev + 1);
+            setMaxStreak((prev) => prev + 1);
+            
             setError(false);
 
             localStorage.setItem('streak', streak + 1);
             localStorage.setItem('maxStreak', Math.max(streak, maxStreak));
         } else {
-            setError(`wrong, the correct answer for ${list[current][0]} is ${list[current][1]} `);
+            setError(`wrong, the correct answer for ${list[current][que]} is ${list[current][ans]} `);
             setStreak(0);
 
             localStorage.setItem('streak', 0);
@@ -51,7 +57,9 @@ export default function Quiz(props) {
         randomize();
         setStreak(parseInt(localStorage.getItem('streak')) || 0);
         setMaxStreak(parseInt(localStorage.getItem('maxStreak')) || 0);
+        console.log('the question is', list[current][que]);
     }, [])
+    
     
     return (
         <div>
@@ -63,7 +71,7 @@ export default function Quiz(props) {
             </header>
             
             <div>
-                {list[current][0]}
+                {list[current][que]}
             </div>
             
             <form onSubmit={handleSubmit}>

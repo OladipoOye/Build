@@ -19,6 +19,6 @@ export default function French() {
         {fr: 'criore', en: 'hello'}, 
     ]
     return (
-        <Quiz name="French" q={french} />
+        <Quiz name="French" q={french} opt1='fr' opt2='en' />
     );
 }
