@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { VStack, Button, Box  } from "@chakra-ui/react";
+import { chakra } from "@chakra-ui/react";
 
 
 export default function Quiz(props) {
@@ -62,7 +64,7 @@ export default function Quiz(props) {
     
     
     return (
-        <div>
+        /*<div>
             <header>
                 <h1> {name} Quiz</h1>
                 <div>
@@ -82,6 +84,38 @@ export default function Quiz(props) {
             </form>
             
             {error && <p>{error}</p>}
-        </div>
+        </div>*/
+        
+        
+        <VStack maxW="80vw" ml="10vw" mt="5vh" gap="8vh" border="dashed white 8px" borderRadius="10px" textAlign="center" minH="80vh">
+            <chakra.header color="white">
+                <chakra.h1 fontSize="3xl">{name} Quiz</chakra.h1>
+                <div>
+                    <chakra.p color="black" bg="white" borderRadius="8px" w="20vw"
+                    _hover={{ bg: "black", color: "white", fontSize:"30px", cursor:"disabled" }}
+                    _focus={{ bg: "red.800" }} transition="all 1000ms">
+                        {streak} / {maxStreak}
+                    </chakra.p>
+                </div>
+            </chakra.header>
+            
+            <chakra.div h="30vh" fontSize="7xl" p="8%" _hover={{bg: "white", borderRadius:"8px",fontSize: "9xl", color: "black",  cursor: "pointer"}} transition="all ease-in 500ms" >
+                {list[current][que]}
+            </chakra.div>
+            
+            <chakra.form onSubmit={handleSubmit} color="white" >
+                <chakra.input 
+                type="text"
+                cursor="text"
+                value={input}
+                onChange={handleChange}
+                borderBottom="dashed 4px white"
+                w="25vw"
+                />
+            </chakra.form>
+            
+            {error && <p>{error}</p>}
+        </VStack>
+        
     );
 }
