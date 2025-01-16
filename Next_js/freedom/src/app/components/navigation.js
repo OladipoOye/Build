@@ -56,11 +56,11 @@ export default function Navigation() {
             <chakra.div>
                 <chakra.h2> Freedom Fellowship</chakra.h2>
                 
-                <button onClick={handleClick}>
+                <chakra.button bg="white" cursor='pointer' onClick={handleClick}>
                     <span></span>
                     <span></span>
                     <span></span> 
-                </button>
+                </chakra.button>
             </chakra.div>
         
             

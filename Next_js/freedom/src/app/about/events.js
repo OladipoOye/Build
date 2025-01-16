@@ -1,4 +1,4 @@
-import { Center, AspectRatio, Box, HStack} from '@chakra-ui/react';
+import { AspectRatio, Box, HStack} from '@chakra-ui/react';
 import { chakra } from '@chakra-ui/react';
 
 export default function Events() {

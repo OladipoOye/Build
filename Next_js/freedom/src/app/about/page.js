@@ -1,17 +1,16 @@
 import Snippet from "./snippet";
 import Events from "./events";
 import Series from "./series";
-import { Image } from "@chakra-ui/react";
+
 
 export default function About() {
     return(
         <>
             <img src="foundationalVerse.png" className="#"></img>
-            <Image src="/foundationalVerse.png" />
             <Snippet />
             <Events />
             <Series />
-            <Image src="/saveImage.PNG" />
+            <img src="saveImage.PNG" />
         </>
     );
 };

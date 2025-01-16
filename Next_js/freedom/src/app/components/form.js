@@ -1,12 +1,12 @@
+"use client"
 import { revalidatePath } from "next/cache";
-import styles from "../ui/form.module.css";
 import { chakra } from "@chakra-ui/react";
 
 export default async function Prayers() {
     //const response = await fetch("https://6781564085151f714b0a5956.mockapi.io/usr");
     //const usrs = await response.json();
     
-    async function addUser(formData: FormData) {
+    async function addUser(formData) {
         "use server"
         const name = formData.get("name")
         const res = await fetch("https://6781564085151f714b0a5956.mockapi.io/usr",
@@ -24,17 +24,17 @@ export default async function Prayers() {
     
     return(
         <>
-            <chakra.form className={styles.formStyle} action={addUser}>
-                <chakra.label className={styles.labelStyle} >Name (optional):</chakra.label>
-                <chakra.input className={styles.sInputStyle} name="name" />
+            <chakra.form action={addUser}>
+                <chakra.label >Name (optional):</chakra.label>
+                <chakra.input name="name" />
           
-                <chakra.label className={styles.labelStyle} >Email (optional):</chakra.label>
-                <chakra.input className={styles.sInputStyle} name="email" />
+                <chakra.label >Email (optional):</chakra.label>
+                <chakra.input name="email" />
           
-                <chakra.label className={styles.labelStyle}>Prayer</chakra.label>
-                <chakra.textarea className={styles.lInputStyle} name="prayer" required/>
+                <chakra.label >Prayer</chakra.label>
+                <chakra.textarea name="prayer" required/>
           
-                <chakra.input className={styles.buttonStyle} type="submit" value="Send" />
+                <chakra.input type="submit" value="Send" />
             </chakra.form>
         </>
     );
