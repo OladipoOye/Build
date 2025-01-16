@@ -2,10 +2,10 @@ import Quiz from "@/app/components/quiz";
 
 export default function French() {
     const french = [
-        {fr: 'sauter', en: 'hello'}, 
-        {fr: 'aller', en: 'hello'}, 
-        {fr: 'sauveguarder', en: 'hello'}, 
-        {fr: 'lever', en: 'hello'}, 
+        {fr: 'sauter', en: 'to jump'}, 
+        {fr: 'aller', en: 'to go'}, 
+        {fr: 'sauveguarder', en: 'to save'}, 
+        {fr: 'lever', en: 'to rise'}, 
         {fr: 'guerir', en: 'hello'}, 
         {fr: 'subventionner', en: 'hello'}, 
         {fr: 'accueillir', en: 'hello'}, 

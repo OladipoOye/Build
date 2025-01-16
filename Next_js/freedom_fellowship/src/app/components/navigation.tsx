@@ -1,30 +1,25 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "../ui/navigation.module.css"
+import { useState } from "react";
 
 
 
 export default function Navigation() {
     const pathname = usePathname(); 
     
-    // for the menu button toggle
-    function togg() {
-        const i = document.querySelector('.i');
-        if (i.className == 'i is-active') {openNav()}
-        else {closeNav()}
-        i.classList.toggle('is-active');};
-
-    // opening the nav bar
-    function openNav(){
-        document.getElementById('sideNav').style.width = '25%';}
-        //document.body.style.backgroundColor = 'rgba(0,0,0,0.4)'}}
-
-    function closeNav(){
-        document.getElementById('sideNav').style.width = '0px';}
-        //document.body.style.backgroundColor = 'white'}
+    //for the menu button toggle
+    const [b, setB] = useState(false);
+    
+    const handleClick = () => {
+        setB((prev) => prev? false: true);
+    }
     
     return (
+        
+        // use Hstack for the links, and a header for the freedom+button
         <>
+        
             <div id="sideNav" className={styles.sidenav}>
                 <Link className={styles.sidenav_a} href="/about">About</Link>
                 <Link className={styles.sidenav_a} href="/now">Now</Link>
@@ -35,7 +30,7 @@ export default function Navigation() {
             <div className={styles.container}>
                 <h2>Freedom Fellowship</h2>
 
-                <button className={styles.i} onClick={togg}>
+                <button className={styles.i} onClick={handleClick}>
                     <span></span>
                     <span></span>
                     <span></span> 

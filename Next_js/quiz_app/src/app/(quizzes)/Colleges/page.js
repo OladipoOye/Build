@@ -2,21 +2,26 @@ import Quiz from "@/app/components/quiz";
 
 export default function Colleges() {
     const colleges = [
-        {ab: 'CHU', college: 'hello'}, 
-        {ab: 'G', college: 'hello'}, 
-        {ab: 'M', college: 'hello'}, 
-        {ab: 'SJC', college: 'hello'}, 
-        {ab: 'H', college: 'hello'}, 
-        {ab: 'DOW', college: 'hello'}, 
-        {ab: 'accueillir', college: 'hello'}, 
-        {ab: 'HOM', college: 'hello'}, 
-        {ab: 'mettre', college: 'hello'}, 
+        {ab: 'CHU', college: 'Churchill'}, 
+        {ab: 'G', college: 'Girton'}, 
+        {ab: 'M', college: 'Murray Edwards'}, 
+        {ab: 'SJC', college: 'St Johns'}, 
+        {ab: 'H', college: 'None'}, 
+        {ab: 'DOW', college: 'Downing'}, 
+        {ab: 'CC', college: 'Corpus Christi'}, 
+        {ab: 'HOM', college: 'Homerton'}, 
+        {ab: 'CL', college: 'Clare'}, 
         {ab: 'JS', college: 'None'}, 
-        {ab: 'W', college: 'hello'}, 
-        {ab: 'SE', college: 'hello'}, 
-        {ab: 'se sentir', college: 'hello'}, 
-        {ab: 'tirer', college: 'hello'}, 
-        {ab: 'T', college: 'hello'}
+        {ab: 'DA', college: 'Darwin'}, 
+        {ab: 'TH', college: 'Trinity Hall'}, 
+        {ab: 'J', college: 'Jesus'}, 
+        {ab: 'W', college: 'Wolfson'}, 
+        {ab: 'SE', college: 'Selwyn'}, 
+        {ab: 'DW', college: 'None'}, 
+        {ab: 'M', college: 'Magdalene'}, 
+        {ab: 'N', college: 'Newnham'}, 
+        {ab: 'PET', college: 'Peterhouse'}, 
+        {ab: 'T', college: 'Trinity'}
     ]
     return (
         <Quiz name="Colleges" q={colleges} opt1='ab' opt2='college' />

@@ -2,6 +2,10 @@ import Image from "next/image";
 import styles from "./page.module.css";
 
 export default function Home() {
+  //setup the main page
+  //use the aspect ratio to style responsively
+  //try and get the page transitions to work again
+  //use normal template with some styling to avoid excess re-writes
   return (
     <div className={styles.page}>
       <main className={styles.main}>

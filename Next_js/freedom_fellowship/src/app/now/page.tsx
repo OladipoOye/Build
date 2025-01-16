@@ -1,6 +1,10 @@
 import styles from "../ui/now.module.css"
 
 export default function Now() {
+    //create animation upon entering page of the pop up for the theme of the month, try to divide it and apply a border radius to get the sam effect
+    //the animation should be pop-up like, and ease-in
+    //the rest of the page can stay the same
+    //rework the modals using state to avoid excess css
     return (
         <>
             <head>
