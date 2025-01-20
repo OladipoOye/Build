@@ -28,10 +28,10 @@ export default function Now() {
                   }}
                   _closed={{
                     animationName: "fade-out, scale-out",
-                    animationDuration: "500ms"}} > Theme of <chakra.br/> The <chakra.br/> Month</chakra.h2>
+                    animationDuration: "500ms"}} > Theme of <br/> The <br/> Month</chakra.h2>
 
                 <div >
-                    <img src="../res/ff_2.jpg"/>
+                    <img src="#"/>
                     <div ><h1 >Ch3</h1></div>
                     <div >
                         <img src="#" id="Prov" />

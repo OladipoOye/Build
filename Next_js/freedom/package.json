@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
     "@chakra-ui/next-js": "^2.4.2",
     "@chakra-ui/react": "^3.3.1",
     "@chakra-ui/transition": "^2.1.0",

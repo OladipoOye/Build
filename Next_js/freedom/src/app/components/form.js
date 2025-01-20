@@ -1,4 +1,3 @@
-"use client"
 import { revalidatePath } from "next/cache";
 import { chakra } from "@chakra-ui/react";
 
@@ -24,18 +23,18 @@ export default async function Prayers() {
     
     return(
         <>
-            <chakra.form action={addUser}>
-                <chakra.label >Name (optional):</chakra.label>
-                <chakra.input name="name" />
+            <form action={addUser}>
+                <label >Name (optional):</label>
+                <input name="name" />
           
-                <chakra.label >Email (optional):</chakra.label>
-                <chakra.input name="email" />
+                <label >Email (optional):</label>
+                <input name="email" />
           
-                <chakra.label >Prayer</chakra.label>
-                <chakra.textarea name="prayer" required/>
+                <label >Prayer</label>
+                <textarea name="prayer" required/>
           
-                <chakra.input type="submit" value="Send" />
-            </chakra.form>
+                <input type="submit" value="Send" />
+            </form>
         </>
     );
 }
