@@ -1,9 +1,9 @@
-import { AspectRatio, Box, HStack} from '@chakra-ui/react';
+"use client"
 import { chakra } from '@chakra-ui/react';
+import { AspectRatio, Box, HStack} from '@chakra-ui/react';
 
 export default function Events() {
     return (
-        <>
             <Box>
                 <chakra.h2 textAlign='center' textDecoration='underline' fontSize='2xl' > Events </chakra.h2>
                 <HStack gap="2vw" w='100%' >
@@ -26,6 +26,5 @@ export default function Events() {
                    
                 </HStack>
             </Box>
-        </>
     );
 };
