@@ -3,6 +3,7 @@ import { AspectRatio, Box, HStack } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/react";
 
 export default function Events() {
+    //event boxes, lined horizontally with images and the descriptions
     return (
             <Box>
                     <chakra.h2 textAlign='center' textDecoration='underline' fontSize='2xl' > Events </chakra.h2>

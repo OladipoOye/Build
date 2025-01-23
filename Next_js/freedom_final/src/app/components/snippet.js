@@ -3,7 +3,7 @@ import { chakra } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 
 export default function Snippet() {
-    
+    //snippet section, in the form of a box, with a title and body (animations included)
     return (
             <Box>
                 <chakra.h2 data-state="open"

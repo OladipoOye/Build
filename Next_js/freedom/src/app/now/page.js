@@ -30,7 +30,7 @@ export default function Now() {
                     animationName: "fade-out, scale-out",
                     animationDuration: "500ms"}} > Theme of <br/> The <br/> Month</chakra.h2>
 
-                <div >
+                <div>
                     <img src="#"/>
                     <div ><h1 >Ch3</h1></div>
                     <div >
