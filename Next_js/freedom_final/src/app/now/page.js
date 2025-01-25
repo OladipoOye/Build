@@ -2,8 +2,8 @@ import { chakra } from "@chakra-ui/react";
 import { useState } from "react";
 
 const images = [
-    "img1", "img2", "img3", "img4"
-]
+    "img1", "img2", "img3"
+];
 
 export default function Now() {
     
@@ -27,12 +27,6 @@ export default function Now() {
     const handleClick2 = () => {
         setDisp('block');
         setImag(images[2]);
-    }
-    
-    //event handlers for setting images as the modal
-    const handleClick3 = () => {
-        setDisp('block');
-        setImag(images[3]);
     }
     
     //event handler for closing the modal image
@@ -59,9 +53,9 @@ export default function Now() {
                     animationName: "fade-out, scale-out",
                     animationDuration: "500ms"}} > Theme of <br/> The <br/> Month</chakra.h2>
                 
-                <chakra.h3>Ch1</chakra.h3>
-                <chakra.h3>Ch2</chakra.h3>
-                <chakra.h3>Ch3</chakra.h3>
+                <chakra.h3 onClick={handleClick0}>Ch1</chakra.h3>
+                <chakra.h3 onClick={handleClick1}>Ch2</chakra.h3>
+                <chakra.h3 onClick={handleClick2}>Ch3</chakra.h3>
                 
             </chakra.div>
         </>
