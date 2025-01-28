@@ -3,9 +3,9 @@ import Events from "../components/events";
 
 export default function About() {
     return (
-        <>
-            <Snippet />
-            <Events />
-        </>
+            <>
+                <Snippet />
+                <Events />
+            </>
     );
 }
