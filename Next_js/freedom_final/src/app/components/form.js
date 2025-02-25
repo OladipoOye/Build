@@ -1,10 +1,10 @@
+"use server"
 import { revalidatePath } from "next/cache";
 import { chakra } from "@chakra-ui/react";
 
 
 export default async function Prayers() {
     async function addUser(formData) {
-        "use server"
         const name = formData.get("name")
         const res = await fetch("https://6781564085151f714b0a5956.mockapi.io/usr",
             {

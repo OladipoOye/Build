@@ -1,7 +1,8 @@
-import { Box, chakra } from "@chakra-ui/react";
+"use client"
+import { Box } from "@chakra-ui/react";
 import { AspectRatio } from "@chakra-ui/react";
 import Prayers from "../components/form";
-imp
+import { chakra } from "@chakra-ui/react";
 
 export default function Contact() {
     return (
