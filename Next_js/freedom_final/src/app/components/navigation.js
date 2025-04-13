@@ -21,7 +21,7 @@ export default function Navigation() {
             <Stack h="100vh" w="40vw" bgColor="blackAlpha.600" gap="10vh">
                 <Link href="/about"><chakra.p pt="5vh" pl="30%" textDecor="underline"> About </chakra.p></Link>
                 <Link href="/now"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Now </chakra.p></Link>
-                <Link href="/cotact"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Contact </chakra.p></Link>
+                <Link href="/contact"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Contact </chakra.p></Link>
                 <Link href="/"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Freedom </chakra.p></Link>
             </Stack>
         </Slide>
