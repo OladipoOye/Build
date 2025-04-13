@@ -1,6 +1,7 @@
 "use client"
 import Link from "next/link";
 import { useState } from "react";
+import { Stack } from "@chakra-ui/react";
 import { HStack } from "@chakra-ui/react";
 import { chakra } from "@chakra-ui/react";
 import { Slide } from "@chakra-ui/transition";
@@ -16,24 +17,24 @@ export default function Navigation() {
     
     return (
         <>
-        <Slide direction="left" in={b} style={{zIndex: 5}}>
-            <HStack>
-                <Link href="/about">About</Link>
-                <Link href="/now">Now</Link>
-                <Link href="/cotact">Contact</Link>
-                <Link href="/">Freedom</Link>
-            </HStack>
+        <Slide direction="left" w="40vw" in={b} style={{zIndex: 5}}>
+            <Stack h="100vh" w="40vw" bgColor="blackAlpha.600" gap="10vh">
+                <Link href="/about"><chakra.p pt="5vh" pl="30%" textDecor="underline"> About </chakra.p></Link>
+                <Link href="/now"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Now </chakra.p></Link>
+                <Link href="/cotact"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Contact </chakra.p></Link>
+                <Link href="/"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Freedom </chakra.p></Link>
+            </Stack>
         </Slide>
         
-        <chakra.div>
-            <chakra.h2>Freedom Fellowship</chakra.h2>
+        <HStack>
+            <chakra.h2 ml="2vw" minH="5vh" pt="1vh" fontSize="xl">Freedom Fellowship</chakra.h2>
             
-            <chakra.button cursor="pointer" onClick={handleClick}>
-                <chakra.span bg="white" ></chakra.span>
-                <chakra.span bg="white" ></chakra.span>
-                <chakra.span bg="white" ></chakra.span>
+            <chakra.button ml="60vw" w="8vw" h="6vh" cursor="pointer" onClick={handleClick} zIndex="8">
+                <chakra.div w="4vw" h="1vh" mb="0.2vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+                <chakra.div w="4vw" h="1vh" mb="0.2vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+                <chakra.div w="4vw" h="1vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
             </chakra.button>
-        </chakra.div>
+        </HStack>
         
         </>
     )

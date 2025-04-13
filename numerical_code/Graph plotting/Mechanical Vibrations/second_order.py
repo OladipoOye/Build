@@ -38,7 +38,7 @@ def step_underd(N, w_n, zeta, x0):
     plt.legend()
     plt.show()
     
-#step_underd(100, 3, 0.3, 20)
+step_underd(1200, 3, 0.3, 20)
 # Only zeta affects the small angle approximation
 # increasing the natural time frequency squishes the graph
 # increasing w_n makes the initial gradient steeper
@@ -61,7 +61,7 @@ def imp_underd(N, w_n, zeta, I):
     plt.title('Second Order Impulse response')
     plt.show()
 
-imp_underd(100, 3, 0.3, 20)
+#imp_underd(100, 3, 0.3, 20)
 # oscillates between negative and positive
 # increasing the natural time frequency squishes the graph
 # decreasing zeta reduces the damping

@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 #  from ipywidgets import interact
 
 
-def plot(u, N, v0):
+def plot(mu, N, v0):
     g = 9.8
     t = np.linspace(0, 20, N-1)
     dt = 20/N
@@ -13,21 +13,20 @@ def plot(u, N, v0):
     xdot[0] = v0
     xe = np.zeros(N)
     xs = np.zeros(N)
-    # setting the initial distance to 50
     euler = []
     semi = []
     
     # equation of motion
     def z(t1):
-        y = -u*g*(t1**2)/2 + v0*t1
+        y = -mu*g*(t1**2)/2 + v0*t1
         if t1 < 10:
-            print('time  is', t1, "seconds,", 'acceleration term is', -u*g*(t1**2)/2, 'u is', u, 'g is', g, ",y is", y) 
+            print('time  is', t1, "seconds,", 'acceleration term is', -mu*g*(t1**2)/2, 'u is', mu, 'g is', g, ",y is", y) 
         return y
 
     # list of y values
     lis = []
     for n in range(1, N):
-        xddot[n-1] = -u*g
+        xddot[n-1] = -mu*g
         xdot[n] = xdot[n-1] + (xddot[n-1] * dt)
         xe[n] = xe[n-1] + (xdot[n-1] * dt)
         euler.append(xe[n])
@@ -45,7 +44,7 @@ def plot(u, N, v0):
 
 
 #interact(plot, u=[0.01, 0.99, 0.04], N=[10, 100, 10])
-plot(u=0.3, N=100, v0=60)
+plot(mu=0.1, N=100, v0=60)
 # does the speed have an effect on the convergence?
 #def z(t1):
     #u = 0.3

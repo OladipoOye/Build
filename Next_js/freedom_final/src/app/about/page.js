@@ -3,9 +3,13 @@ import Events from "../components/events";
 
 export default function About() {
     return (
-            <>
-                <Snippet />
-                <Events />
-            </>
+            <div>
+                <div>
+                    <Snippet />
+                </div>
+                <div>
+                    <Events />
+                </div>
+            </div>
     );
 }

@@ -12,5 +12,5 @@ export default function RootLayout(props) {
         </Provider>
       </body>
     </html>
-  )
+  );
 }

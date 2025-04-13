@@ -1,3 +1,4 @@
+"use client"
 import { chakra } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -6,7 +7,6 @@ const images = [
 ];
 
 export default function Now() {
-    
     //state setting for the modal image src, and the modal image display
     const [imag, setImag ] = useState("#");
     const [disp, setDisp] = useState('none');
