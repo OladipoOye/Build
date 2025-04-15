@@ -13,6 +13,8 @@ export default function Contact() {
                     <Prayers />
                 </chakra.div> */}
                 
+                <chakra.img id="center" pos="absolute" top="20vh" left="20vw" h="60vh" w="60vw" objectFit="cover" src="/res/ff_0.png"/>
+                
                 <chakra.div id="topright" pos="absolute" top="10vh" right="2vw" maxH="60vh" maxW="60vw" >
                     <chakra.iframe src="https://www.youtube.com/@wearefreedomk/" allowFullScreen></chakra.iframe>
                 </chakra.div>

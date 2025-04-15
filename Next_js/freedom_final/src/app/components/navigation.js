@@ -29,10 +29,10 @@ export default function Navigation() {
         <HStack>
             <chakra.h2 ml="2vw" minH="5vh" pt="1vh" fontSize="xl">Freedom Fellowship</chakra.h2>
             
-            <chakra.button ml="60vw" w="8vw" h="6vh" cursor="pointer" onClick={handleClick} zIndex="8">
-                <chakra.div w="4vw" h="1vh" mb="0.2vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
-                <chakra.div w="4vw" h="1vh" mb="0.2vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
-                <chakra.div w="4vw" h="1vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+            <chakra.button ml="75vw" w="8vw" h="6vh" cursor="pointer" onClick={handleClick} zIndex="8">
+                <chakra.div w="3.5vw" h="1.5vh" mb="0.4vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+                <chakra.div w="3.5vw" h="1.5vh" mb="0.4vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+                <chakra.div w="3.5vw" h="1.5vh" borderRadius="xl" bgColor={b? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
             </chakra.button>
         </HStack>
         
