@@ -7,15 +7,15 @@ import { chakra } from "@chakra-ui/react";
 export default function Contact() {
     return (
         <>
-            <Box display="absolute" w="100vw" h="100vh" bgColor="blackAlpha.950">
+            <Box display="absolute" w="100vw" h="90vh" bgColor="blackAlpha.950">
                 
-                {/* <chakra.div id="topleft" > 
+                <chakra.div id="topleft" pos="absolute" top="12vh" left="2vw" maxH="60vh" maxW="50vw" zIndex="5" > 
                     <Prayers />
-                </chakra.div> */}
+                </chakra.div>
                 
                 <chakra.img id="center" pos="absolute" top="20vh" left="20vw" h="60vh" w="60vw" objectFit="cover" src="/res/ff_0.png"/>
                 
-                <chakra.div id="topright" pos="absolute" top="10vh" right="2vw" maxH="60vh" maxW="60vw" >
+                <chakra.div id="topright" pos="absolute" top="16vh" right="4vw" maxH="60vh" maxW="60vw" >
                     <chakra.iframe src="https://www.youtube.com/@wearefreedomk/" allowFullScreen></chakra.iframe>
                 </chakra.div>
                 
@@ -27,7 +27,7 @@ export default function Contact() {
                     </chakra.p>
                 </chakra.div>
                 
-                <chakra.div id="bottomright" pos="absolute" right="20vw" bottom="10vh" h="50vh" w="20vw">
+                <chakra.div id="bottomright" pos="absolute" right="24vw" bottom="4vh" h="50vh" w="20vw">
                     <chakra.iframe borderRadius="1em" h="50vh" w="40vw" src="https://www.instagram.com/wearefreedomkent/embed/" allowFullScreen></chakra.iframe>
                 </chakra.div>
                 
