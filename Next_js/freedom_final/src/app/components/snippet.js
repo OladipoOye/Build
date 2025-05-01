@@ -5,8 +5,8 @@ import { Box } from "@chakra-ui/react";
 export default function Snippet() {
     //snippet section, in the form of a box, with a title and body (animations included)
     return (
-            <Box color="black" w="100%" h="50vh" bg="white">
-                <chakra.h1 fontSize="2xl" textDecoration="underline" data-state="open"
+            <Box color="black" w="100%" h={["auto", "50vh"]} bg="white" p={["4", "8"]}>
+                <chakra.h1 fontSize={["lg", "2xl"]} textDecoration="underline" data-state="open"
                   _open={{
                     animationName: "slide-from-right-full, scale-in",
                     animationDuration: "750ms",
@@ -17,7 +17,9 @@ export default function Snippet() {
                     The Freedom Fellowship 
                 </chakra.h1>
                 
-                <chakra.p data-state="open"
+                <chakra.p 
+                fontSize={["sm", "md"]}
+                data-state="open"
                   _open={{
                     animationName: "fade-in, scale-in",
                     animationDuration: "2000ms",

@@ -3,7 +3,7 @@ import numpy as np
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 
-# example of implementing polynomial regression
+# example of implementing linear regression
 # Generate some array data
 X = np.array([[1, 2], [2, 4], [3, 5], [4, 2], [5, 8]])
 y = np.array([1, 2, 3, 40, 32])

@@ -1,36 +1,66 @@
-"use client"
-import { Box } from "@chakra-ui/react";
-import { AspectRatio } from "@chakra-ui/react";
+"use client";
+import { Box, Grid, GridItem, AspectRatio, chakra } from "@chakra-ui/react";
 import Prayers from "../components/form";
-import { chakra } from "@chakra-ui/react";
 
 export default function Contact() {
     return (
         <>
-            <Box display="absolute" w="100vw" h="90vh" bgColor="blackAlpha.950">
-                
-                <chakra.div id="topleft" pos="absolute" top="12vh" left="2vw" maxH="60vh" maxW="50vw" zIndex="5" > 
-                    <Prayers />
-                </chakra.div>
-                
-                <chakra.img id="center" pos="absolute" top="20vh" left="20vw" h="60vh" w="60vw" objectFit="cover" src="/res/ff_0.png"/>
-                
-                <chakra.div id="topright" pos="absolute" top="16vh" right="4vw" maxH="60vh" maxW="60vw" >
-                    <chakra.iframe src="https://www.youtube.com/@wearefreedomk/" allowFullScreen></chakra.iframe>
-                </chakra.div>
-                
-                <chakra.div id="bottomleft" pos="absolute" left="2vw" bottom="10vh" maxW="40vw" >
-                    <chakra.p>
-                    Service times: Every other wednesday, 7pm<br/>
-                    Location: Snoddhurst Bottom, Chatham ME5 OLU<br/>
-                    Contact no:
-                    </chakra.p>
-                </chakra.div>
-                
-                <chakra.div id="bottomright" pos="absolute" right="24vw" bottom="4vh" h="50vh" w="20vw">
-                    <chakra.iframe borderRadius="1em" h="50vh" w="40vw" src="https://www.instagram.com/wearefreedomkent/embed/" allowFullScreen></chakra.iframe>
-                </chakra.div>
-                
+            <Box w="100vw" minH="100vh" bgColor="blackAlpha.950" p={["4", "8"]}>
+                {/* Responsive Grid Layout */}
+                <Grid
+                    templateColumns={["1fr", "repeat(2, 1fr)"]} // Adjust columns for different screen sizes
+                    gap={["4", "8"]} // Add spacing between grid items
+                >
+                    {/* Prayer Form */}
+                    <GridItem colSpan={[1, 1]} order={[2, 2]}>
+                        <Box maxH="60vh" maxW="100%">
+                            <Prayers />
+                            
+                            <chakra.p mt="4vh" fontSize={["md", "xl"]} color="white">
+                                Service times: Every other Wednesday, 7pm<br />
+                                Location: Snoddhurst Bottom, Chatham ME5 OLU<br />
+                                Contact no:
+                            </chakra.p>
+                        </Box>
+                    </GridItem>
+
+                    {/* Center Image */}
+                    <GridItem colSpan={[1, 1]} order={[1, 1]}>
+                        <chakra.img
+                            h={["40vh", "60vh"]}
+                            w="100%"
+                            objectFit="cover"
+                            src="/res/ff_0.png"
+                            borderRadius="md"
+                        />
+                    </GridItem>
+                    
+                    {/* YouTube Embed */}
+                    <GridItem colSpan={[1, 1]} order={[3, 3]}>
+                        <Box maxH="60vh" maxW="100%">
+                            <AspectRatio ratio={16 / 9}>
+                                <chakra.iframe
+                                    src="https://www.youtube.com/@wearefreedomk/"
+                                    allowFullScreen
+                                    borderRadius="md"
+                                ></chakra.iframe>
+                            </AspectRatio>
+                        </Box>
+                    </GridItem>
+
+                    {/* Instagram Embed */}
+                    <GridItem colSpan={[1, 1]} order={[4, 4]}>
+                        <Box>
+                            <AspectRatio ratio={4 / 3} maxW="80vw" >
+                                <chakra.iframe
+                                    borderRadius="1em"
+                                    src="https://www.instagram.com/wearefreedomkent/embed/"
+                                    allowFullScreen
+                                ></chakra.iframe>
+                            </AspectRatio>
+                        </Box>
+                    </GridItem>
+                </Grid>
             </Box>
         </>
     );

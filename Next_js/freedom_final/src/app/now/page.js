@@ -47,22 +47,68 @@ export default function Now() {
             </chakra.div>
             
             <chakra.div className="bg_img" pos="relative" transition="0.5s ease">
-                <chakra.img mt="0.5vh" ml="5vw" h="88vh" w="90vw" objectFit="cover" id="mainimg" src="/res/ff_2.jpg"/>
+                <chakra.img opacity="0.7" mt={["8vh", "0.5vh"]} ml={["0", "5vw"]}  h={["60vh", "88vh"]} w={["100vw", "90vw"]} objectFit={["contain", "cover"]} id="mainimg" src="/res/ff_2.jpg"/>
                 
-                <chakra.h2 pos="absolute" top="40vh" left="42vw" zIndex='5' bgColor="blackAlpha.400" borderRadius="1em" data-state="open"
-                  _open={{
-                    animationName: "fade-in, scale-in",
-                    animationDuration: "3000ms",
-                  }}
-                  _closed={{
-                    animationName: "fade-out, scale-out",
-                    animationDuration: "1000ms"}} textDecor="underline" textAlign="center" fontSize="4xl"> Theme of The <br/>Month</chakra.h2>
-                
-                <chakra.h3 pos="absolute" top="12vh" left="8vw" onClick={handleClick0} zIndex="2" cursor="pointer" fontWeight="bold" color="black">Ch1</chakra.h3>
-                <chakra.h3 pos="absolute" top="80vh" left="8vw" onClick={handleClick1} zIndex="2" cursor="pointer" fontWeight="bold" color="black">Ch2</chakra.h3>
-                <chakra.h3 pos="absolute" top="80vh" right="12vw" onClick={handleClick2} zIndex="2" cursor="pointer" fontWeight="bold" color="black">Ch3</chakra.h3>
-                
-            </chakra.div>
-        </>
-    );
+                {/* theme of the month popup */}
+                <chakra.h2
+                    pos="absolute"
+                    top={["30vh", "40vh"]} 
+                    left={["30vw", "42vw"]} 
+                    zIndex="5"
+                    bgColor="blackAlpha.400"
+                    borderRadius="1em"
+                    data-state="open"
+                    _open={{
+                        animationName: "fade-in, scale-in",
+                        animationDuration: "3000ms",
+                    }}
+                    _closed={{
+                        animationName: "fade-out, scale-out",
+                        animationDuration: "1000ms",
+                    }}
+                    textDecor="underline"
+                    textAlign="center"
+                    fontSize={["2xl", "4xl"]} >
+                    Theme of The <br /> Month
+                </chakra.h2>
+                    
+                    {/* the chapters for the month */}
+                <chakra.h3
+                    pos="absolute"
+                    top={["8vh", "12vh"]} 
+                    left={["5vw", "8vw"]} 
+                    onClick={handleClick0}
+                    zIndex="2"
+                    cursor="pointer"
+                    fontWeight="bold"
+                    fontSize={["lg", "xl"]} 
+                    color={["white", "black"]}>
+                    Ch1
+                </chakra.h3>
+                <chakra.h3
+                    pos="absolute"
+                    top={["70vh", "80vh"]} 
+                    left={["5vw", "8vw"]} 
+                    onClick={handleClick1}
+                    zIndex="2"
+                    cursor="pointer"
+                    fontWeight="bold"
+                    fontSize={["lg", "xl"]} 
+                    color={["white", "black"]}>
+                    Ch2
+                </chakra.h3>
+                <chakra.h3
+                    pos="absolute"
+                    top={["70vh", "80vh"]} 
+                    right={["5vw", "12vw"]} 
+                    onClick={handleClick2}
+                    zIndex="2"
+                    cursor="pointer"
+                    fontWeight="bold"
+                    fontSize={["lg", "xl"]} 
+                    color={["white", "black"]}>
+                    Ch3
+                </chakra.h3>
+        </chakra.div>
+    </>);
 }

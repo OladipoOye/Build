@@ -10,60 +10,98 @@ import { useRef } from "react";
 export default function Navigation() {
     // For the menu button toggle
     const [b, setB] = useState(false);
+    const [hovered, setHovered] = useState(false); // State to track hover
 
     const handleClick = () => {
         setB((prev) => !prev);
     };
 
-    // Use refs for the menu button divs
-    const b1Ref = useRef(null);
-    const b2Ref = useRef(null);
-    const b3Ref = useRef(null);
+    const handleMouseOver = () => {
+        setHovered(true); // Set hover state to true
+    };
 
-    // For the menu button animation
-    function handleMouseOver() {
-        if (b1Ref.current && b2Ref.current && b3Ref.current) {
-            b1Ref.current.style.transform = "rotate(90deg) scaleX(1.3) scaleY(0.8) translate(1vw, 0.5vh)";
-            b2Ref.current.style.transform = "scale(0)";
-            b3Ref.current.style.transform = "scaleY(0.8) translate(-0.5vw, -4vh)";
-        }
-    }
-
-    function handleMouseOut() {
-        if (b1Ref.current && b2Ref.current && b3Ref.current) {
-            b1Ref.current.style.transform = "rotate(0deg) scaleX(1) translate(0vw, 0vh)";
-            b2Ref.current.style.transform = "scale(1)";
-            b3Ref.current.style.transform = "scaleX(1) scaleY(1) translate(0vw, 0vh)";
-        }
-    }
+    const handleMouseOut = () => {
+        setHovered(false); // Set hover state to false
+    };
 
     return (
         <>
-            <Slide direction="left" w="40vw" in={b} style={{ zIndex: 5 }}>
-                <Stack h="100vh" w="40vw" bgColor="blackAlpha.600" gap="10vh">
-                    <Link href="/about"><chakra.p pt="5vh" pl="30%" textDecor="underline"> About </chakra.p></Link>
-                    <Link href="/now"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Now </chakra.p></Link>
-                    <Link href="/contact"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Contact </chakra.p></Link>
-                    <Link href="/"><chakra.p pt="5vh" pl="30%" textDecor="underline"> Freedom </chakra.p></Link>
+            {/* Slide-out menu */}
+            <Slide direction="left" w={["80vw", "40vw"]} in={b} style={{ zIndex: 5 }}>
+                <Stack h="100vh" w={["100vw", "40vw"]} bgColor="blackAlpha.600" gap={["5vh", "10vh"]}>
+                    <Link href="/about">
+                        <chakra.p pt="5vh" pl={["40%", "30%"]} textDecor="underline" fontSize={["md", "lg"]}>
+                            About
+                        </chakra.p>
+                    </Link>
+                    <Link href="/now">
+                        <chakra.p pt="5vh" pl={["40%", "30%"]} textDecor="underline" fontSize={["md", "lg"]}>
+                            Now
+                        </chakra.p>
+                    </Link>
+                    <Link href="/contact">
+                        <chakra.p pt="5vh" pl={["40%", "30%"]} textDecor="underline" fontSize={["md", "lg"]}>
+                            Contact
+                        </chakra.p>
+                    </Link>
+                    <Link href="/">
+                        <chakra.p pt="5vh" pl={["40%", "30%"]} textDecor="underline" fontSize={["md", "lg"]}>
+                            Freedom
+                        </chakra.p>
+                    </Link>
                 </Stack>
             </Slide>
+                    {/* Navigation header */}
+            <HStack
+                h={["8vh", "8vh"]}
+                justifyContent="space-between" 
+                alignItems="center" 
+                spacing={["4", "8"]} 
+                px={["4", "8"]}>                    
+                <chakra.h2 fontSize={["md", "xl"]}>
+                    Freedom Fellowship
+                </chakra.h2>
 
-            <HStack>
-                <chakra.h2 pt="3vh" pl="1vw" h="10vh" fontSize="xl">Freedom Fellowship</chakra.h2>
-
+                    {/* Menu button */}
                 <chakra.button
-                    ml="80vw"
-                    w="8vw"
-                    h="6vh"
+                    w={["12vw", "4vw"]}
+                    h={["8vh", "8vh"]}
+                    pt={["0.5vh", "0vh"]}
                     cursor="pointer"
                     onClick={handleClick}
                     onMouseOver={handleMouseOver}
                     onMouseOut={handleMouseOut}
-                    zIndex="8"
-                >
-                    <chakra.div ref={b1Ref} transition="0.5s ease-in-out" className="b1" w="3.5vw" h="1.5vh" mb="0.4vh" borderRadius="xl" bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
-                    <chakra.div ref={b2Ref} transition="0.5s ease-in-out" className="b2" w="3.5vw" h="1.5vh" mb="0.4vh" borderRadius="xl" bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
-                    <chakra.div ref={b3Ref} transition="0.5s ease-in-out" className="b3" w="3.5vw" h="1.5vh" borderRadius="xl" bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}></chakra.div>
+                    zIndex="8">
+                            
+                    <chakra.div
+                        transition="0.5s ease-in-out"
+                        className="b1"
+                        w={["8vw", "3.5vw"]}
+                        h="1.5vh"
+                        mb="0.4vh"
+                        borderRadius="xl"
+                        bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}
+                        transform={[hovered ? "rotate(90deg) scaleY(0.8) scaleX(1.4) translate(1vw, 0.5vh)" : "none", hovered ? "rotate(90deg) scaleY(0.8) translate(1vw, 0.5vh)" : "none"]}>
+                    </chakra.div>
+                    <chakra.div
+                        transition="0.5s ease-in-out"
+                        className="b2"
+                        w={["8vw", "3.5vw"]}
+                        h="1.5vh"
+                        mb="0.4vh"
+                        borderRadius="xl"
+                        bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}
+                        transform={hovered ? "scale(0.1)" : "none"}>
+                    </chakra.div>
+                    <chakra.div
+                        transition="0.5s ease-in-out"
+                        className="b3"
+                        w={["8vw", "3.5vw"]}
+                        h="1.5vh"
+                        borderRadius="xl"
+                        bgColor={b ? "whiteAlpha.600" : "whiteAlpha.950"}
+                        transform={[hovered ? "scaleY(0.8) translate(-0.6vw, -5vh)" : "none", hovered ? "scaleY(0.8) translate(-0.3vw, -4vh)" : "none"]}>
+                    </chakra.div>
                 </chakra.button>
             </HStack>
         </>
