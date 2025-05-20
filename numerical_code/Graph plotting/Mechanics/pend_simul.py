@@ -53,3 +53,6 @@ def pendulum(t, theta0, thetadot0, N):
     plt.show()
     
 pendulum(20, np.pi/4, 0, 300000)
+
+#Both show a large degree of accuracy, however the verlet second order method is more dependent on the time step size.
+#The semi-implicit first order method is more stable and less dependent on the time step size, however it is less accurate at very small time step sizes.
