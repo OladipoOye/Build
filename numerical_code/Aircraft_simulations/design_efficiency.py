@@ -122,16 +122,19 @@ class Aircraft:
         A = L / (0.5 * rho_sl * V**2 * Cl)
         return A
         
-    def calculate_jet_velocity(self, LCV):
+    def calculate_jet_velocity(self):
         # The thermal efficiency comes from the change in kinetic energy of the flow, due to the heat release
         # The thermal efficiency is also related to the thermodynamic efficiency of the cycle
         # The jet velocity is therefore a function of the thermal efficiency, LCV and the plane speed
+        # We will however calculate the jet velocity based on the thrust and the mass flow rate of air
+        # Fn = mdota * (Vj - V)
         AFR = self.AFR
-        
         V = self.calculate_cruise_speed()
+        Fn = self.calculate_cruise_thrust()
         
-        jet_squared = ((2 * LCV * self.eta_th) / self.AFR) + (V**2)
-        Vj = np.sqrt(jet_squared)
+        mdota = self.calculate_mdotf() * AFR
+        
+        Vj = (Fn / mdota) + V
         return Vj
     
         
