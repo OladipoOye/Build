@@ -5,7 +5,7 @@
 # M = 0.85, Cl = 0.5 (cruise) and Cl = 1.6(Take-off) Are constants assumed based on large aircraft curves, and will have to be adapted for smaller/different types of aircrafts
 
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 class Aircraft:
     def __init__(self, empty_weight, passengers, max_fuel_weight, range_f, cruise_alt, M, L_D, AFR, eta_th, fuel_weight = 300):
