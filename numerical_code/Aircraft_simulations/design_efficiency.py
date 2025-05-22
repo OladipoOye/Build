@@ -188,7 +188,7 @@ class Aircraft:
         Fg = mdota * Vj
         return Fg
         
-    def calculate_eta_p(self, Vj):
+    def calculate_eta_p(self):
         # The propulsive efficiency comes from the power to the aircraft(V*Fn), due to the change in kinetic energy of the flow
         # V*Fn is equal to the last term of the expanded SFEE equation (mdota*V*(Vj - V))
         # The change in kinetic energy is 0.5*mdota*((Vj**2) - V**2)
@@ -203,6 +203,7 @@ class Aircraft:
         # The ideal case is to make the jet velocity similar to the aircraft velocity, but have a large mass flow rate of air, so that the thrust is sufficient to drive the plane
         return eta_p
     
-    def calculate_eta_o(self, eta_p, eta_th):
+    def calculate_eta_o(self):
+        eta_p = self.calculate_eta_p()
         eta_o = eta_p * self.eta_th
         return eta_o
