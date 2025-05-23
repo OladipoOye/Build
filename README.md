@@ -4,7 +4,7 @@ The refined coding and web development projects of Elisha Oyewole.
 Split into 3 key sections:
 - Next_js is my folder for web development using react, self-learnt in the latter half of 2024. Specifically Next_js applications, and mainly styled using chakra ui. In here we see a combination of concept websites, and a restyling of a static website built using HTML, CSS, and Javascript, that I built for my youth church.
 
-- numerical_code is my folder for numerical compuation, assembled after experiencing my first year modules in maths and mechanical vibratioins. These were started in the easter of first year, as a way to recap and visualise examples in a practical manner, using python.
+- numerical_code is my folder for numerical simulations, assembled after experiencing my first year modules in maths and mechanical vibrations.
 
 - vanilla_js is my folder for my initial web development projects, implemented in the summer of my first year and built using HTML, CSS and JavaScript (which I also learnt that summer). Here we get to see my deployed website, built for the Girton Engineering Society "https://girtonengsoc.co.uk" in its development stage.
 
