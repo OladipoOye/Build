@@ -69,6 +69,14 @@ class Game:
         # Check if the player achieved a triple-double in the game
         stats = [self.AST, self.REB, self.STL, self.BLK, self.TO]
         return sum(stat >= 10 for stat in stats) >= 3
+
+    def double_double(self):
+        # Check if the player achieved a double-double in the game
+        stats = [self.AST, self.REB, self.STL, self.BLK, self.TO]
+        # Check if the player achieved a triple-double first
+        if self.triple_double():
+            return False
+        return sum(stat >= 10 for stat in stats) >= 2
     
     def FGA(self):
         # Calculate the total field goal attempts
@@ -175,6 +183,14 @@ class SeasonPlayer:
         # Calculate the total free throws made by the player in the season
         return sum(game.FTM for game in self.games)
     
+    def triple_doubles(self):
+        # Calculate the total number of triple-doubles achieved by the player in the season
+        return sum(1 for game in self.games if game.triple_double())
+
+    def double_doubles(self):
+        # Calculate the total number of double-doubles achieved by the player in the season
+        return sum(1 for game in self.games if game.double_double())
+
     def total_games(self):
         # Calculate the total number of games played by the player in the season
         # This is simply the length of the games list unless 0 minutes were played
