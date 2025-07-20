@@ -1,0 +1,3 @@
+This is a project aimed at tracking player performance in a game/season
+The code is structured to allow for easy modification for different players
+There will be a single game, season and a team class

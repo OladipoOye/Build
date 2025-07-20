@@ -1,0 +1,21 @@
+First comparison - easy stats for basketball
+- Simple interface, direct application of stats
+- Emails players/parents stats after games
+- Completely free, however stats have to be manually input in real time
+
+Second Comparison - Breakthrough stats
+Broader range of stats, not free at all
+- Similar structure, but also tracks player weight and team colour, and expands to league
+- Good/important overview when opening the app
+
+Third Comparison - Hoopmetrics
+- Broad range of stats
+- Position tracked field goals, and backed up data
+
+Takeaways from these - expand team/player features 
+1. Maybe include a year attribute for players, so that you can compare to last year, or have a yearly based incentive/send off/message
+2.Have a clear ui overview/introduction
+3.Have a number attribute for players
+4.Possibly look to add a field goal class - would be added to the game class, and would allow for field goal scoring positions analysis, but also could make the whole app a drag
+5.Would be better if implementing the field goal class under a screen tap feature, as it would prevent manually typing out all of the positions that someone scored
+6.Find a way also of backing up data
