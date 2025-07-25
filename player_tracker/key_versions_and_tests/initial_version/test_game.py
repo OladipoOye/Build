@@ -60,3 +60,59 @@ def test_triple_double(triple_double_game):
 # Creating a home and an away extension of the game class could add a lot of simplicity
 # Using inputs instead of a large intitialisation may help on the user end
 # Extend the exceptions for more rigorous cases - Like playing for more than 40 minutes
+
+# Test the game class with a season player
+@pytest.fixture
+def my_season_player():
+    # Creat 2 dummy games
+    game1 = Game(1, 'Notts', 10, pace=3, TwoPM=4, assists=11, ThreePM=1, TwoPA=7, ThreePA=2, FTM=1, FTA=2)
+    game2 = Game(2, 'NTU', 35, pace=3, steals=2, turnovers=6, assists=11, rebounds=20, fouls=2, TwoPM=7, ThreePM=2, TwoPA=7, ThreePA=2, FTM=1, FTA=2)
+    #Create a season player with the games
+    my_season_player = SeasonPlayer('Bros', 'Guard', 'Cam')
+    my_season_player.add_game(game1)
+    my_season_player.add_game(game2)
+    return my_season_player
+
+# Test the season player class
+def test_season_player(my_season_player):
+    assert my_season_player.total_points() == (my_season_player.games[0].calc_points() + my_season_player.games[1].calc_points())
+    assert my_season_player.total_FGA() == (my_season_player.games[0].FGA() + my_season_player.games[1].FGA())
+    assert my_season_player.total_double_doubles() == 1
+    assert my_season_player.total_triple_doubles() == 1
+
+def test_season_player_percentages(my_season_player):
+    game_1 = my_season_player.games[0]
+    game_2 = my_season_player.games[1]
+    total_three_pointers = (game_1.three_PM + game_2.three_PM)
+    total_three_point_attempts = (game_1.three_PA + game_2.three_PA)
+    assert my_season_player.total_three_point_percentage() == (total_three_pointers / total_three_point_attempts)
+
+    total_fta = (game_1.FTA + game_2.FTA)
+    total_fga = (game_1.FGA() + game_2.FGA())
+    total_points = (game_1.calc_points() + game_2.calc_points())
+    assert my_season_player.total_ts_percentage() == ((0.5 * total_points) / (total_fga + 0.44 * total_fta))
+
+# Test the team class
+@pytest.fixture
+def my_team():
+    # Create a team with 2 players
+    player1 = SeasonPlayer('Bros', 'Guard', 'Cam')
+    player2 = SeasonPlayer('Dude', 'Forward', 'Cam')
+    
+    # Create 2 dummy games for each player
+    game1 = Game(1, 'Notts', 10, pace=3, TwoPM=4, assists=11, ThreePM=1, TwoPA=7, ThreePA=2, FTM=1, FTA=2)
+    game2 = Game(2, 'NTU', 35, pace=3, steals=2, turnovers=6, assists=11, rebounds=20, fouls=2, TwoPM=7, ThreePM=2, TwoPA=7, ThreePA=2, FTM=1, FTA=2)
+    game3 = Game(3, 'Lei', 20, pace=3, steals=1, turnovers=2, assists=5, rebounds=10, fouls=1, TwoPM=3, ThreePM=1, TwoPA=5, ThreePA=1, FTM=2, FTA=3)
+    game4 = Game(4, 'Shef', 30, pace=3, steals=3, turnovers=4, assists=8, rebounds=15, fouls=3, TwoPM=5, ThreePM=2, TwoPA=6, ThreePA=3, FTM=2, FTA=4)
+    
+    player1.add_game(game1)
+    player2.add_game(game2)
+    
+    team = Team('My Team',scores=[[], []])
+    team.add_player(player1)
+    team.add_player(player2)
+    
+    return team
+
+def test_team(my_team):
+    # Test the total points scored by the team, the average free throw attempts, and the win loss record
