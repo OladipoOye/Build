@@ -13,9 +13,9 @@ Third Comparison - Hoopmetrics
 - Position tracked field goals, and backed up data
 
 Takeaways from these - expand team/player features 
-1. Maybe include a year attribute for players, so that you can compare to last year, or have a yearly based incentive/send off/message
+1.Maybe include a year (2025?) attribute for players, this can be input into the SeasonPlayer class so that you can compare to last year, or have a yearly based incentive/send off/message
 2.Have a clear ui overview/introduction
-3.Have a number attribute for players
-4.Possibly look to add a field goal class - would be added to the game class, and would allow for field goal scoring positions analysis, but also could make the whole app a drag
+3.Have a number attribute for players - could add to id, make it better for users
+4.Possibly look to add a field goal class - would be added to the game class, and would allow for field goal scoring positions analysis, but this could also make the app unnecesarily complex
 5.Would be better if implementing the field goal class under a screen tap feature, as it would prevent manually typing out all of the positions that someone scored
-6.Find a way also of backing up data
+6.Find a way also of storing the player data

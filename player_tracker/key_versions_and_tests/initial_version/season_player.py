@@ -13,21 +13,22 @@ class SeasonPlayer:
         self.bpm_list = []
 
         # Validate the input data
-        if self.player_id is None or self.name is None or self.position is None or self.team is None:
+        if self.name is None or self.position is None or self.team is None:
             raise ValueError("Player ID, name, position, and team cannot be None")
-        if type(self.position) is not str or type(self.team) is not str:
+        elif type(self.position) is not str or type(self.team) is not str:
             raise TypeError("Position and team must be strings")
-        if self.position not in ["Guard", "Wing", "Big"]:
+        elif self.position not in ["Guard", "Wing", "Big"]:
             raise ValueError("Position must be one of 'Guard', 'Wing', 'Big'")
         
     def add_game(self, game):
-        self.games.append(game)
         # Validate that the game is an instance of the Game class
         if not isinstance(game, Game):
             raise TypeError("Game must be an instance of the Game class")
         # Validate that the game is not already in the player's game list
-        if game in self.games:
+        elif game in self.games:
             raise ValueError("Game already exists in the player's game list")
+        self.games.append(game)
+        
 
     def total_points(self):
         # Calculate the total points scored by the player in the season
@@ -165,7 +166,7 @@ class SeasonPlayer:
         # Calculate the average three-point percentage made by the player per game
         if self.total_games() <= 0:
             return 0
-        return self.total_three_point_field_goals() / self.total_field_goal_attempts() if self.total_field_goal_attempts() > 0 else 0
+        return self.total_three_point_field_goals() / self.total_three_point_field_goal_attempts() if self.total_field_goal_attempts() > 0 else 0
     
     def average_free_throw_percentage(self):
         # Calculate the average free throw percentage made by the player per game

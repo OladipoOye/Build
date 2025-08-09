@@ -4,7 +4,7 @@
 from season_player import SeasonPlayer
 
 class Team:
-    def __init__(self, team_name, year=None, league=None, scores=[]):
+    def __init__(self, team_name, scores, year=None, league=None):
         # Initialize the team with its name
         self.team_name = team_name
         self.players = []
@@ -26,11 +26,11 @@ class Team:
             raise TypeError("League must be a string")
         
     def add_player(self, player):
-        # Add a player to the team
-        self.players.append(player)
         # Validate that the player is an instance of the SeasonPlayer class
         if not isinstance(player, SeasonPlayer):
             raise TypeError("Player must be an instance of the SeasonPlayer class")
+        # Add a player to the team
+        self.players.append(player)
     
     def total_points(self):
         # Calculate the total points scored by all players in the team
@@ -183,4 +183,4 @@ class Team:
         return (wins, losses)
 
     def __str__(self):
-        return f"Team {self.name}: {self.win_loss_record()[0]}-{self.win_loss_record()[1]}"
+        return f"Team {self.team_name}: {self.win_loss_record()[0]}-{self.win_loss_record()[1]}"
