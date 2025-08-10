@@ -17,5 +17,5 @@ Takeaways from these - expand team/player features
 2.Have a clear ui overview/introduction
 3.Have a number attribute for players - could add to id, make it better for users
 4.Possibly look to add a field goal class - would be added to the game class, and would allow for field goal scoring positions analysis, but this could also make the app unnecesarily complex
-5.Would be better if implementing the field goal class under a screen tap feature, as it would prevent manually typing out all of the positions that someone scored
-6.Find a way also of storing the player data
+5.Would be better if implementing the field goal class under a screen tap feature (like in a web application environment), as it would prevent manually typing out all of the positions that someone scored
+6.Finding a way of storing the player data could help with building a web application from the model
