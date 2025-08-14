@@ -37,6 +37,8 @@ class Game:
         # Validate the input data
         if self.mins < 0:
             raise ValueError("Minutes played cannot be negative")
+        elif self.mins > 40:
+            raise ValueError("Minutes played cannot exceed 40")
         elif self.two_pm < 0 or self.two_pa < 0 or self.three_pm < 0 or self.three_pa < 0:
             raise ValueError("Field goal stats cannot be negative")
         elif self.ftm < 0 or self.fta < 0:
@@ -237,17 +239,17 @@ class Game:
 
     def calc_points(self):
         # Calculate the total points scored in the game
-        points = (self.three_pm * 2) + (self.three_pm * 3) + self.ftm
+        points = (self.two_pointers[0] * 2) + (self.three_pointers[0] * 3) + self.free_throws[0]
         return points
 
     def triple_double(self):
         # Check if the player achieved a triple-double in the game
-        stats = [self._ast, self._reb, self._stl, self._blk, self._to, self.calc_points()]
+        stats = [self._ast, self._reb, self._stl, self._blk, self._to, self.points]
         return sum(stat >= 10 for stat in stats) >= 3
 
     def double_double(self):
         # Check if the player achieved a double-double in the game
-        stats = [self._ast, self._reb, self._stl, self._blk, self._to, self.calc_points()]
+        stats = [self._ast, self._reb, self._stl, self._blk, self._to, self.points]
         # Check if the player achieved a triple-double first
         if self.triple_double():
             return False
@@ -269,7 +271,7 @@ class Game:
         return self._three_pm / self._three_pa
 
     def __repr__(self):
-        return f"Game {self.game_id} against {self.opps}. Key stats are: {self.calc_points()} points, {self.three_point_percentage()*100}% from 3pt range, {self.ts_percentage()*100}% true shooting. "
+        return f"Game {self.game_id} against {self.opps}. Key stats are: {self.points} points, {self.three_point_percentage()*100}% from 3pt range, {self.ts_percentage()*100}% true shooting. "
 
     def __del__(self):
         print(f"Game {self.game_id} against {self.opps} has been deleted.")
