@@ -20,7 +20,7 @@ class SeasonPlayer:
         self.team = team
         self.year = year
         self._games = []
-        self._game_ids = []
+        self.game_ids = []
         self._home_games = []
         self._away_games = []
         self._bpm_dict = {}
@@ -51,10 +51,10 @@ class SeasonPlayer:
             self._away_games.append(game)
 
         # Store the game ID for the current game
-        self._game_ids.append(game.id)
+        self.game_ids.append(game.game_id)
         # Store the BPM for the current game
         bpm = self.calc_box_plus_minus(game)
-        self._bpm_dict[game.id] = bpm
+        self._bpm_dict[game.game_id] = bpm
 
     def total_points(self):
         # Calculate the total points scored by the player in the season
@@ -110,77 +110,80 @@ class SeasonPlayer:
 
     def triple_doubles(self):
         # Calculate the total number of triple-doubles achieved by the player in the season
-        return sum(1 for game in self.games if game.triple_double())
+        return sum(1 for game in self._games if game.triple_double())
 
     def double_doubles(self):
         # Calculate the total number of double-doubles achieved by the player in the season
-        return sum(1 for game in self.games if game.double_double())
+        return sum(1 for game in self._games if game.double_double())
 
     def total_games(self):
         # Calculate the total number of games played by the player in the season
         # This is simply the length of the games list unless 0 minutes were played
-        return sum(1 for game in self.games if game.mins > 0)
+        return sum(1 for game in self._games if game.mins > 0)
     
     def games_missed(self):
-        return sum(1 for game in self.games if game.mins == 0)
-    
+        return sum(1 for game in self._games if game.mins == 0)
+
+    def games_played(self):
+        return sum(1 for game in self._games if game.mins > 0)
+
     # Calculate the player's average metrics per game
 
-    def average_points(self):
+    def points_per_game(self):
         # Calculate the average points scored by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_points() / self.total_games()
     
-    def average_assists(self):
+    def assists_per_game(self):
         # Calculate the average assists made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_assists() / self.total_games()
     
-    def average_rebounds(self):
+    def rebounds_per_game(self):
         # Calculate the average rebounds made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_rebounds() / self.total_games()
     
-    def average_steals(self):
+    def steals_per_game(self):
         # Calculate the average steals made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_steals() / self.total_games()
     
-    def average_blocks(self):
+    def blocks_per_game(self):
         # Calculate the average blocks made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_blocks() / self.total_games()
     
-    def average_turnovers(self):
+    def turnovers_per_game(self):
         # Calculate the average turnovers made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_turnovers() / self.total_games()
     
-    def average_fouls(self):
+    def fouls_per_game(self):
         # Calculate the average fouls made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_fouls() / self.total_games()
     
-    def average_field_goal_attempts(self):
+    def field_goal_attempts_per_game(self):
         # Calculate the average field goal attempts made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_field_goal_attempts() / self.total_games()
     
-    def average_free_throw_attempts(self):
+    def free_throw_attempts_per_game(self):
         # Calculate the average free throw attempts made by the player per game
         if self.total_games() <= 0:
             return 0
         return self.total_free_throw_attempts() / self.total_games()
-    
-    def average_two_point_field_goals(self):
+
+    def two_point_field_goals_per_game(self):
         # Calculate the average two-point field goals made by the player per game
         if self.total_games() <= 0:
             return 0
@@ -298,7 +301,7 @@ class SeasonPlayer:
 
     def get_bpm(self, id):
         if id not in self._bpm_dict:
-            print(f"BPM for game ID {id} not found. Current games are: {self._game_ids}")
+            print(f"BPM for game ID {id} not found. Current games are: {self.game_ids}")
             raise ValueError(f"BPM for game ID {id} not found.")
         return self._bpm_dict.get(id)
 
@@ -308,10 +311,10 @@ class SeasonPlayer:
                 f"Assists: {self.total_assists()}, Rebounds: {self.total_rebounds()}, "
                 f"Steals: {self.total_steals()}, Blocks: {self.total_blocks()}, "
                 f"Turnovers: {self.total_turnovers()}, Fouls: {self.total_fouls()}\n"
-                f"Average Points: {self.average_points():.2f}, Average Assists: {self.average_assists():.2f}, "
-                f"Average Rebounds: {self.average_rebounds():.2f}, Average Steals: {self.average_steals():.2f}, "
-                f"Average Blocks: {self.average_blocks():.2f}, Average Turnovers: {self.average_turnovers():.2f}, "
-                f"Average Fouls: {self.average_fouls():.2f}\n"
+                f"Average Points: {self.points_per_game():.2f}, Average Assists: {self.assists_per_game():.2f}, "
+                f"Average Rebounds: {self.rebounds_per_game():.2f}, Average Steals: {self.steals_per_game():.2f}, "
+                f"Average Blocks: {self.blocks_per_game():.2f}, Average Turnovers: {self.turnovers_per_game():.2f}, "
+                f"Average Fouls: {self.fouls_per_game():.2f}\n"
                 f"True Shooting Percentage: {self.average_true_shooting_percentage():.2f}, "
                 f"Three-Point Percentage: {self.average_three_point_percentage():.2f}, "
                 f"Free Throw Percentage: {self.average_free_throw_percentage():.2f}, "
@@ -322,8 +325,8 @@ class SeasonPlayer:
 
     # Class method of forming a season from a list of games
     @classmethod
-    def from_game_list(cls, game_list):
-        season = cls('x')
+    def from_games(cls, name, game_list):
+        season = cls(name)
         for game in game_list:
             season.add_game(game)
         return season

@@ -39,19 +39,19 @@ class Game:
             raise ValueError("Minutes played cannot be negative")
         elif self.mins > 40:
             raise ValueError("Minutes played cannot exceed 40")
-        elif self.two_pm < 0 or self.two_pa < 0 or self.three_pm < 0 or self.three_pa < 0:
+        elif self._two_pm < 0 or self._two_pa < 0 or self._three_pm < 0 or self._three_pa < 0:
             raise ValueError("Field goal stats cannot be negative")
-        elif self.ftm < 0 or self.fta < 0:
+        elif self._ftm < 0 or self._fta < 0:
             raise ValueError("Free throw stats cannot be negative")
-        elif self.stl < 0 or self.blk < 0 or self.to < 0 or self.ast < 0 or self.reb < 0:
+        elif self._stl < 0 or self._blk < 0 or self._to < 0 or self._ast < 0 or self._reb < 0:
             raise ValueError("Performance stats cannot be negative")
-        elif self.fouls < 0:
+        elif self._fouls < 0:
             raise ValueError("Fouls cannot be negative")
-        elif self.two_pa < self.two_pm:
+        elif self._two_pa < self._two_pm:
             raise ValueError("Two-point field goals made cannot exceed attempts")
-        elif self.three_pa < self.three_pm:
+        elif self._three_pa < self._three_pm:
             raise ValueError("Three-point field goals made cannot exceed attempts")
-        elif self.fta < self.ftm:
+        elif self._fta < self._ftm:
             raise ValueError("Free throws made cannot exceed attempts")
         elif self.game_id is None or self.opps is None:
             raise ValueError("Game ID, date, and opposing team cannot be None")
@@ -77,7 +77,7 @@ class Game:
 
     @steals.deleter
     def steals(self):
-        del self._stl
+        self._stl = 0
 
     # Property for the blocks
     @property
@@ -94,7 +94,7 @@ class Game:
 
     @blocks.deleter
     def blocks(self):
-        del self._blk
+        self._blk = 0
 
     # Property for the turnovers
     @property
@@ -111,7 +111,7 @@ class Game:
 
     @turnovers.deleter
     def turnovers(self):
-        del self._to
+        self._to = 0
 
     # Property for the assists
     @property
@@ -128,7 +128,7 @@ class Game:
 
     @assists.deleter
     def assists(self):
-        del self._ast
+        self._ast = 0
 
     # Property for the rebounds
     @property
@@ -145,7 +145,7 @@ class Game:
 
     @rebounds.deleter
     def rebounds(self):
-        del self._reb
+        self._reb = 0
 
     # Property for the fouls
     @property
@@ -162,7 +162,7 @@ class Game:
     
     @fouls.deleter
     def fouls(self):
-        del self._fouls
+        self._fouls = 0
 
     # Property for the two pointers
     @property
@@ -170,7 +170,8 @@ class Game:
         return [self._two_pm, self._two_pa]
     
     @two_pointers.setter
-    def two_pointers(self, makes, attempts):
+    def two_pointers(self, makes_attempts_list):
+        makes, attempts = makes_attempts_list[0], makes_attempts_list[1]
         if makes < 0 or attempts < 0:
             raise ValueError("Two point makes or attempts cannot be negative")
         elif not isinstance(makes, int):
@@ -182,16 +183,17 @@ class Game:
 
     @two_pointers.deleter
     def two_pointers(self):
-        del self._two_pm
-        del self._two_pa
-    
+        self._two_pm = 0
+        self._two_pa = 0
+
     # Property for the three pointers
     @property
     def three_pointers(self):
         return [self._three_pm, self._three_pa]
     
     @three_pointers.setter
-    def two_pointers(self, makes, attempts):
+    def three_pointers(self, makes_attempts_list):
+        makes, attempts = makes_attempts_list[0], makes_attempts_list[1]
         if makes < 0 or attempts < 0:
             raise ValueError("Three point makes or attempts cannot be negative")
         elif not isinstance(makes, int):
@@ -203,8 +205,8 @@ class Game:
 
     @three_pointers.deleter
     def three_pointers(self):
-        del self._three_pm
-        del self._three_pa
+        self._three_pm = 0
+        self._three_pa = 0
 
     # Property for the free throws
     @property
@@ -212,7 +214,8 @@ class Game:
         return [self._ftm, self._fta]
     
     @free_throws.setter
-    def free_throws(self, makes, attempts):
+    def free_throws(self, makes_attempts_list):
+        makes, attempts = makes_attempts_list[0], makes_attempts_list[1]
         if makes < 0 or attempts < 0:
             raise ValueError("Free throw makes or attempts cannot be negative")
         elif not isinstance(makes, int):
@@ -224,9 +227,9 @@ class Game:
 
     @free_throws.deleter
     def free_throws(self):
-        del self._ftm
-        del self._fta
-    
+        self._ftm = 0
+        self._fta = 0
+
     # Property for the points
     @property
     def points(self):
@@ -240,6 +243,7 @@ class Game:
     def calc_points(self):
         # Calculate the total points scored in the game
         points = (self.two_pointers[0] * 2) + (self.three_pointers[0] * 3) + self.free_throws[0]
+        # print(f"Points calculated: {points}, from {self.two_pointers[0]} two-pointers, {self.three_pointers[0]} three-pointers, and {self.free_throws[0]} free throws.")
         return points
 
     def triple_double(self):

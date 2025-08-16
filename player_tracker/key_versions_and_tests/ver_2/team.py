@@ -12,23 +12,23 @@ class Team:
         # Initialize the team with its name
         self.team_name = team_name
         self._playerseasons = []
-        self._game_ids = []
+        self._game_list = []
         self._players_dict = {}
         self._year = year
         self._league = league
 
         # The scores will be a list of game scores, with the representative team always first, and the opponents second
         # eg, [[28, 12], [40, 35], [22, 30]]
-        self._scores = scores
+        self.scores = scores
 
         # Validate the input data
         if self.team_name is None:
             raise ValueError("Team name cannot be None")
         if type(self.team_name) is not str:
             raise TypeError("Team name must be a string")
-        if self.year is not None and type(self.year) is not int:
+        if self._year is not None and type(self._year) is not int:
             raise TypeError("Year must be an integer or None")
-        if self.league is not None and type(self.league) is not str:
+        if self._league is not None and type(self._league) is not str:
             raise TypeError("League must be a string")
         
     def add_player(self, player):
@@ -39,89 +39,90 @@ class Team:
             raise ValueError(f"Player's year {player.year} does not match team's year {self._year}")
         
         # Add a player to the team
-        self._players.append(player)
-        # Add the player to the players dictionary
-        self._players_dict[player.name] = player.position
+        self._playerseasons.append(player)
+        # Add the player to the players dictionary, if not already present
+        if player.name not in self._players_dict:
+            self._players_dict[player.name] = player.position
         # Add the player's game IDs to the team's game ID list if not already present
         for game_id in player.game_ids:
-            if game_id not in self._game_ids:
-                self._game_ids.append(game_id)
+            if game_id not in self._game_list:
+                self._game_list.append(game_id)
 
     def total_points(self):
         # Calculate the total points scored by all players in the team
-        return sum(player.total_points() for player in self._players)
+        return sum(player.total_points() for player in self._playerseasons)
 
     def total_assists(self):
         # Calculate the total assists made by all players in the team
-        return sum(player.total_assists() for player in self._players)
+        return sum(player.total_assists() for player in self._playerseasons)
 
     def total_rebounds(self):
         # Calculate the total rebounds made by all players in the team
-        return sum(player.total_rebounds() for player in self._players)
+        return sum(player.total_rebounds() for player in self._playerseasons)
 
     def total_steals(self):
         # Calculate the total steals made by all players in the team
-        return sum(player.total_steals() for player in self._players)
+        return sum(player.total_steals() for player in self._playerseasons)
 
     def total_blocks(self):
         # Calculate the total blocks made by all players in the team
-        return sum(player.total_blocks() for player in self._players)
+        return sum(player.total_blocks() for player in self._playerseasons)
 
     def total_turnovers(self):
         # Calculate the total turnovers made by all players in the team
-        return sum(player.total_turnovers() for player in self._players)
+        return sum(player.total_turnovers() for player in self._playerseasons)
 
     def total_fouls(self):
         # Calculate the total fouls made by all players in the team
-        return sum(player.total_fouls() for player in self._players)
+        return sum(player.total_fouls() for player in self._playerseasons)
 
     # Calculate the team average metrics per game
 
     def average_points(self):
         # Calculate the average points scored by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_points() / len(self._game_ids)
+        return self.total_points() / len(self._game_list)
 
     def average_assists(self):
         # Calculate the average assists made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_assists() / len(self._game_ids)
+        return self.total_assists() / len(self._game_list)
 
     def average_rebounds(self):
         # Calculate the average rebounds made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_rebounds() / len(self._game_ids)
+        return self.total_rebounds() / len(self._game_list)
 
     def average_steals(self):
         # Calculate the average steals made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_steals() / len(self._game_ids)
+        return self.total_steals() / len(self._game_list)
 
     def average_blocks(self):
         # Calculate the average blocks made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_blocks() / len(self._game_ids)
+        return self.total_blocks() / len(self._game_list)
 
     def average_turnovers(self):
         # Calculate the average turnovers made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_turnovers() / len(self._game_ids)
+        return self.total_turnovers() / len(self._game_list)
 
     def average_fouls(self):
         # Calculate the average fouls made by the team per game
-        if len(self._scores) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return self.total_fouls() / len(self._game_ids)
+        return self.total_fouls() / len(self._game_list)
 
     def team_field_goal_percentage(self):
         # Calculate the total field goal percentage of the team
-        total_fga = sum((player.total_field_goal_attempts() - player.total_three_point_field_goal_attempts()) for player in self._playerseasons)
+        total_fga = sum(player.total_field_goal_attempts() for player in self._playerseasons)
         total_fg_made = sum(player.total_two_point_field_goals() + player.total_three_point_field_goals() for player in self._playerseasons)
         if total_fga == 0:
             return 0
@@ -145,60 +146,60 @@ class Team:
     
     # Calculate the team's average three point and free throw makes per game
 
-    def average_three_point_makes(self):
+    def three_point_makes_per_game(self):
         # Calculate the average three-point makes per game for the team
-        if len(self.scores) == 0:
+        if len(self._game_list) == 0:
             return 0
         total_3pm = sum(player.total_three_point_field_goals() for player in self._playerseasons)
-        return total_3pm / len(self._game_ids)
+        return total_3pm / len(self._game_list)
 
-    def average_free_throw_makes(self):
+    def free_throw_makes_per_game(self):
         # Calculate the average free throw makes per game for the team
-        if len(self.scores) == 0:
+        if len(self._game_list) == 0:
             return 0
         total_ftm = sum(player.total_free_throw_makes() for player in self._playerseasons)
-        return total_ftm / len(self._game_ids)
+        return total_ftm / len(self._game_list)
 
     # Calculate the team's average free throw and three point attempts per game
 
-    def average_three_point_attempts(self):
+    def three_point_attempts_per_game(self):
         # Calculate the average three-point attempts per game for the team
-        if len(self.scores) == 0:
+        if len(self._game_list) == 0:
             return 0
         total_3pa = sum(player.total_three_point_field_goal_attempts() for player in self._playerseasons)
-        return total_3pa / len(self._game_ids)
+        return total_3pa / len(self._game_list)
 
     def average_free_throw_attempts(self):
         # Calculate the average free throw attempts per game for the team
         if len(self.scores) == 0:
             return 0
         total_fta = sum(player.total_free_throw_attempts() for player in self._playerseasons)
-        return total_fta / len(self._game_ids)
+        return total_fta / len(self._game_list)
 
     # Calculate the team's average points scored and condeded per game, along with the win/loss record
 
-    def average_points_scored(self):
+    def points_scored_per_game(self):
         # Calculate the average points scored by the team per game
-        if len(self._game_ids) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return sum(score[0] for score in self.scores) / len(self._game_ids)
+        return sum(score[0] for score in self.scores) / len(self._game_list)
 
     def average_points_conceded(self):
         # Calculate the average points conceded by the team per game
-        if len(self._game_ids) == 0:
+        if len(self._game_list) == 0:
             return 0
-        return sum(score[1] for score in self.scores) / len(self._game_ids)
+        return sum(score[1] for score in self.scores) / len(self._game_list)
 
     def win_loss_record(self):
         # Calculate the team's win/loss record
-        if len(self._game_ids) == 0:
+        if len(self._game_list) == 0:
             return (0, 0)
         wins = sum(1 for score in self.scores if score[0] > score[1])
         losses = sum(1 for score in self.scores if score[0] < score[1])
         if wins + losses == 0:
             return (0, 0)
-        elif wins + losses < len(self._game_ids):
-            print(f"Warning: Not all games accounted for in win/loss record. Current games are: {self._game_ids}")
+        elif wins + losses < len(self._game_list):
+            print(f"Warning: Not all games accounted for in win/loss record. Current games are: {self._game_list}")
             return (wins, losses)
         return (wins, losses)
 
