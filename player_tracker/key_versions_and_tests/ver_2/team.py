@@ -8,7 +8,7 @@
 from season_player import SeasonPlayer
 
 class Team:
-    def __init__(self, team_name, scores, year=2024, league=None):
+    def __init__(self, team_name, scores=None, year=2024, league=None):
         # Initialize the team with its name
         self.team_name = team_name
         self._playerseasons = []
@@ -49,8 +49,20 @@ class Team:
                 self._game_list.append(game_id)
 
     def total_points(self):
-        # Calculate the total points scored by all players in the team
-        return sum(player.total_points() for player in self._playerseasons)
+        # Calculate the total points scored by the team
+        # Check if the points scored are valid
+        players_points = sum(player.total_points() for player in self._playerseasons)
+        if self.scores is not None and len(self.scores) > 0:
+            score_points = sum(game[0] for game in self.scores)
+            if players_points >= score_points:
+                raise ValueError("Total points input by players exceeds team scores")
+            elif len(self.scores) < len(self._game_list):
+                print("Warning: Not all game scores are uploaded, using player scores as a substitute")
+                return players_points
+            else:
+                return score_points
+        else:
+            return players_points
 
     def total_assists(self):
         # Calculate the total assists made by all players in the team
@@ -78,43 +90,43 @@ class Team:
 
     # Calculate the team average metrics per game
 
-    def average_points(self):
+    def team_points_per_game(self):
         # Calculate the average points scored by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_points() / len(self._game_list)
 
-    def average_assists(self):
+    def team_assists_per_game(self):
         # Calculate the average assists made by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_assists() / len(self._game_list)
 
-    def average_rebounds(self):
+    def team_rebounds_per_game(self):
         # Calculate the average rebounds made by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_rebounds() / len(self._game_list)
 
-    def average_steals(self):
+    def team_steals_per_game(self):
         # Calculate the average steals made by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_steals() / len(self._game_list)
 
-    def average_blocks(self):
+    def team_blocks_per_game(self):
         # Calculate the average blocks made by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_blocks() / len(self._game_list)
 
-    def average_turnovers(self):
+    def team_turnovers_per_game(self):
         # Calculate the average turnovers made by the team per game
         if len(self._game_list) == 0:
             return 0
         return self.total_turnovers() / len(self._game_list)
 
-    def average_fouls(self):
+    def team_fouls_per_game(self):
         # Calculate the average fouls made by the team per game
         if len(self._game_list) == 0:
             return 0
@@ -123,7 +135,9 @@ class Team:
     def team_field_goal_percentage(self):
         # Calculate the total field goal percentage of the team
         total_fga = sum(player.total_field_goal_attempts() for player in self._playerseasons)
+        print(f"Total field goal attempts: {total_fga}")
         total_fg_made = sum(player.total_two_point_field_goals() + player.total_three_point_field_goals() for player in self._playerseasons)
+        print(f"Total field goals made: {total_fg_made}")
         if total_fga == 0:
             return 0
         return total_fg_made / total_fga
@@ -146,14 +160,14 @@ class Team:
     
     # Calculate the team's average three point and free throw makes per game
 
-    def three_point_makes_per_game(self):
+    def team_three_point_makes_per_game(self):
         # Calculate the average three-point makes per game for the team
         if len(self._game_list) == 0:
             return 0
         total_3pm = sum(player.total_three_point_field_goals() for player in self._playerseasons)
         return total_3pm / len(self._game_list)
 
-    def free_throw_makes_per_game(self):
+    def team_free_throw_makes_per_game(self):
         # Calculate the average free throw makes per game for the team
         if len(self._game_list) == 0:
             return 0
@@ -176,19 +190,15 @@ class Team:
         total_fta = sum(player.total_free_throw_attempts() for player in self._playerseasons)
         return total_fta / len(self._game_list)
 
-    # Calculate the team's average points scored and condeded per game, along with the win/loss record
-
-    def points_scored_per_game(self):
-        # Calculate the average points scored by the team per game
-        if len(self._game_list) == 0:
-            return 0
-        return sum(score[0] for score in self.scores) / len(self._game_list)
-
-    def average_points_conceded(self):
+    # Calculate the team's average points conceded per game, along with the win/loss record
+    def team_points_conceded_per_game(self):
         # Calculate the average points conceded by the team per game
         if len(self._game_list) == 0:
             return 0
-        return sum(score[1] for score in self.scores) / len(self._game_list)
+        elif len(self.scores) == 0:
+            return 0
+        else:
+            return sum(score[1] for score in self.scores) / len(self._game_list)
 
     def win_loss_record(self):
         # Calculate the team's win/loss record
@@ -206,3 +216,10 @@ class Team:
     def __str__(self):
         return f"Team {self.team_name}: {self.win_loss_record()[0]}-{self.win_loss_record()[1]} \n" \
                f"Players and positions: {self._players_dict} \n"
+    
+    @classmethod
+    def from_players(cls, Team_name, Scores, Year, League, players):
+        team = cls(team_name=Team_name, scores=Scores, year=Year, league=League)
+        for player in players:
+            team.add_player(player)
+        return team

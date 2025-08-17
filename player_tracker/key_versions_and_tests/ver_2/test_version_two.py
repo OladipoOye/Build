@@ -2,6 +2,7 @@ import pytest
 from game import Game
 from home_away_varsity_game import HomeGame, AwayGame, VarsityGame
 from season_player import SeasonPlayer
+from team import Team
 
 
 # ---------- Fixture for the game
@@ -226,5 +227,94 @@ def test_avg_methods_zero_games():
     assert sp.assists_per_game() == 0
     assert sp.rebounds_per_game() == 0
 
-
+# Takaways
 # Naming for the SeasonPlayer class was a bit confusing initially, so will now implement per a per game naming convention
+
+# ------------------Team class testing
+@pytest.fixture
+def sample_team():
+    p1 = SeasonPlayer.from_games("John Doe", [
+        Game(1, "Oxford", 30, assists_=4, rebounds_=5, steals_=2, TwoPM_=5, TwoPA_=10, ThreePM_=2, ThreePA_=5, FTM_=3, FTA_=4),
+        Game(2, "Oxford", 25, assists_=4, rebounds_=7, steals_=1, TwoPM_=4, TwoPA_=9, ThreePM_=1, ThreePA_=4, FTM_=2, FTA_=3),
+        Game(3, "Oxford", 35, assists_=6, rebounds_=6, steals_=3, TwoPM_=6, TwoPA_=11, ThreePM_=3, ThreePA_=6, FTM_=4, FTA_=5),
+    ])
+
+    p2 = SeasonPlayer.from_games("Jane Smith", [
+        Game(1, "Oxford", 28, assists_=2, rebounds_=6, steals_=1, TwoPM_=4, TwoPA_=8, ThreePM_=2, ThreePA_=4, FTM_=2, FTA_=3),
+        Game(2, "Oxford", 22, assists_=2, rebounds_=5, steals_=0, TwoPM_=3, TwoPA_=7, ThreePM_=1, ThreePA_=3, FTM_=1, FTA_=2),
+        Game(3, "Oxford", 30, assists_=5, rebounds_=8, steals_=2, TwoPM_=5, TwoPA_=9, ThreePM_=3, ThreePA_=5, FTM_=4, FTA_=6),
+    ])
+
+    p3 = SeasonPlayer.from_games("Alice Johnson", [
+        Game(1, "Oxford", 32, assists_=3, rebounds_=7, steals_=2, TwoPM_=6, TwoPA_=12, ThreePM_=4, ThreePA_=8, FTM_=5, FTA_=7),
+        Game(2, "Oxford", 29, assists_=1, rebounds_=6, steals_=1, TwoPM_=5, TwoPA_=10, ThreePM_=3, ThreePA_=7, FTM_=4, FTA_=5),
+        Game(3, "Oxford", 34, assists_=2, rebounds_=8, steals_=3, TwoPM_=7, TwoPA_=11, ThreePM_=5, ThreePA_=9, FTM_=6, FTA_=8),
+    ])
+
+    team1 = Team.from_players("Oxford", Scores=[[54, 43], [90, 45], [80, 90]], Year=2024, League="Division 1", players=[p1, p2, p3])
+
+    return team1
+
+@pytest.fixture
+def sample_team_no_scores():
+    p1 = SeasonPlayer.from_games("John Doe", [
+        Game(1, "Oxford", 30, assists_=4, rebounds_=5, steals_=2, TwoPM_=5, TwoPA_=10, ThreePM_=2, ThreePA_=5, FTM_=3, FTA_=4),
+        Game(2, "Oxford", 25, assists_=4, rebounds_=7, steals_=1, TwoPM_=4, TwoPA_=9, ThreePM_=1, ThreePA_=4, FTM_=2, FTA_=3),
+        Game(3, "Oxford", 35, assists_=6, rebounds_=6, steals_=3, TwoPM_=6, TwoPA_=11, ThreePM_=3, ThreePA_=6, FTM_=4, FTA_=5),
+    ])
+
+    p2 = SeasonPlayer.from_games("Jane Smith", [
+        Game(1, "Oxford", 28, assists_=2, rebounds_=6, steals_=1, TwoPM_=4, TwoPA_=8, ThreePM_=2, ThreePA_=4, FTM_=2, FTA_=3),
+        Game(2, "Oxford", 22, assists_=2, rebounds_=5, steals_=0, TwoPM_=3, TwoPA_=7, ThreePM_=1, ThreePA_=3, FTM_=1, FTA_=2),
+        Game(3, "Oxford", 30, assists_=5, rebounds_=8, steals_=2, TwoPM_=5, TwoPA_=9, ThreePM_=3, ThreePA_=5, FTM_=4, FTA_=6),
+    ])
+
+    p3 = SeasonPlayer.from_games("Alice Johnson", [
+        Game(1, "Oxford", 32, assists_=3, rebounds_=7, steals_=2, TwoPM_=6, TwoPA_=12, ThreePM_=4, ThreePA_=8, FTM_=5, FTA_=7),
+        Game(2, "Oxford", 29, assists_=1, rebounds_=6, steals_=1, TwoPM_=5, TwoPA_=10, ThreePM_=3, ThreePA_=7, FTM_=4, FTA_=5),
+        Game(3, "Oxford", 34, assists_=2, rebounds_=8, steals_=3, TwoPM_=7, TwoPA_=11, ThreePM_=5, ThreePA_=9, FTM_=6, FTA_=8),
+    ])
+
+    team1 = Team.from_players("Oxford", Scores=None, Year=2024, League="Division 1", players=[p1, p2, p3])
+
+    return team1
+
+# ------------------ Team class tests
+def test_team_creation(sample_team):
+    assert sample_team.team_name == "Oxford"
+    assert sample_team.win_loss_record() == (2, 1)  # Based on scores provided
+
+
+# ------------------ Testing total methods
+def test_totals(sample_team):
+    assert sample_team.total_points() == 224  # Sum of all points from players  
+    assert sample_team.total_assists() == 29  # Sum of all assists from players
+    assert sample_team.total_rebounds() == 58  # Sum of all rebounds from players
+    assert sample_team.total_steals() == 15   # Sum of all steals
+    assert sample_team.total_blocks() == 0   # No blocks in provided data
+    assert sample_team.total_turnovers() == 0 # No turnovers in provided data
+    assert sample_team.total_fouls() == 0     # No fouls in provided data
+   
+
+def test_totals_no_scores(sample_team_no_scores):
+    assert sample_team_no_scores.total_points() == 193 # 31 free throws, 24 3 pointers, 45 two pointers
+
+# ----------------- Testing team average metrics
+def test_team_average_metrics(sample_team):
+    assert sample_team.team_points_per_game() == pytest.approx(74.67, rel=1e-2)  # 224 / 3
+    assert sample_team.team_assists_per_game() == pytest.approx(9.67, rel=1e-2)  # 29 / 3
+    assert sample_team.team_rebounds_per_game() == pytest.approx(19.33, rel=1e-2)  # 58 / 3
+    assert sample_team.team_steals_per_game() == pytest.approx(5, rel=1e-2)  # 15 / 3
+    assert sample_team.team_blocks_per_game() == pytest.approx(0)  # 0 / 3
+    assert sample_team.team_turnovers_per_game() == pytest.approx(0)  # 0 / 3
+    assert sample_team.team_fouls_per_game() == pytest.approx(0)  # 0 / 3
+    assert sample_team.team_points_conceded_per_game() == pytest.approx(59.33, rel=1e-2)  # 178 / 3
+
+# ----------------- Testing team field goal percentages
+def test_team_field_goal_percentages(sample_team):
+    assert sample_team.team_field_goal_percentage() == pytest.approx((24+45)/(51+87), rel=1e-2)  # Based on provided data
+    assert sample_team.team_three_point_percentage() == pytest.approx(24/51, rel=1e-2)  # Based on provided data
+    assert sample_team.team_free_throw_percentage() == pytest.approx(31/43, rel=1e-2)  # Based on provided data
+
+
+# Takeaways
