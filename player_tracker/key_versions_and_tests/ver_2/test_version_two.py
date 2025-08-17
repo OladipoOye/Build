@@ -318,3 +318,4 @@ def test_team_field_goal_percentages(sample_team):
 
 
 # Takeaways
+# Always use a calculator for verification
