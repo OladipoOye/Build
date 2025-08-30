@@ -17,9 +17,9 @@ export default function Contact() {
                             <Prayers />
                             
                             <chakra.p mt="4vh" fontSize={["md", "xl"]} color="white">
-                                Service times: Every other Wednesday, 7pm<br />
-                                Location: Snoddhurst Bottom, Chatham ME5 OLU<br />
-                                Contact no:
+                                Service times: ###ServiceTimes<br />
+                                Location: ###Location<br />
+                                Contact no: ###ContactNo
                             </chakra.p>
                         </Box>
                     </GridItem>
