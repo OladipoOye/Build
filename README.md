@@ -5,7 +5,7 @@ Split into 5 key sections:
 
 - basketball_stat_tracker is my recent basketball statistics tracker project modelled in python, out of the pursuit of finding an effective way to implement stat tracking, without the usage of video or in-game logging, motivated from my time spent as part of CUBbC.
 
-- Next_js is my folder for web development using react, self-learnt in the latter half of 2024. Specifically Next_js applications, and mainly styled using chakra ui. In here we see a combination of concept websites, and a restyling of a static website built using HTML, CSS, and Javascript, that I built for my youth church.
+- Next_js is my folder for web development using react, self-learnt in the latter half of 2024. Specifically Next_js applications, and mainly styled using chakra ui. In here we see a combination of concept websites, and a restyling of a static website built initially using HTML, CSS, and Javascript, that I built for my youth church.
 
 - numerical_simulations is my folder for numerical simulations, assembled after experiencing my first year modules in maths and mechanical vibrations.
 
