@@ -36,7 +36,7 @@ class Aircraft:
         return self.passengers
     
     
-    # Cruise conditions: temperature, density, thrust and speed, M=0.85, Cl-= 0.5
+    # Cruise conditions: temperature, density, thrust and speed, M=0.85, Cl= 0.5
     def calculate_temperature(self):
         # Calculate the temperature at cruise altitude using the International Standard Atmosphere (ISA) model
         # T = T0 - (0.0065 * self.cruise_alt)
