@@ -2,7 +2,7 @@
 # The code is structured to allow for easy modification and testing of different design parameters.
 # This is made in conjunction with the Aircraft Design Elective at the University of Cambridge.
 # There will be one aircraft class, with input parameters for the design.
-# M = 0.85, Cl = 0.5 (cruise) and Cl = 1.6(Take-off) Are constants assumed based on large aircraft curves, and will have to be adapted for smaller/different types of aircrafts
+# M = 0.85, Cl = 0.5 (cruise) and Cl = 1.6(Take-off) All constants assumed based on large aircraft curves, and will have to be adapted for smaller/different types of aircrafts
 
 import numpy as np
 #import matplotlib.pyplot as plt
