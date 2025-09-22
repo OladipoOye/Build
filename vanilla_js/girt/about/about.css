@@ -39,7 +39,7 @@ img{
     height: 100%;
     border-radius: 12px;}
 
-#cal{background-image: url("../resources/cal_two.png");
+/*#cal{background-image: url("../resources/cal_two.png");
     transition: 0.75s ease;}
 #cal:hover{background-image: url("../resources/b-two.png");}
 
@@ -61,7 +61,7 @@ img{
 
 #leavers{background-image: url("../resources/bond.png");
     transition: 0.75s ease;}
-#leavers:hover{background-image: url("../resources/b-two.png");}
+#leavers:hover{background-image: url("../resources/b-two.png");} */
 
 .content{
     display: grid;

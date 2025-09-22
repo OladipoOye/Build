@@ -19,7 +19,7 @@ max_arrrival_times = [random.randint(1, 50) for i in range(number_of_simulations
 avg_time_between_arrivals = []
 num_passengers = [random.randint(1, 25) for i in range(number_of_simulations)]
 
-# Initialise the list for the outpyt
+# Initialise the list for the output
 avg_total_waiting_time = []
 
 # Run simulation 50 times, with varying inputs
@@ -42,7 +42,7 @@ for j in range(number_of_simulations):
 # Create the results data, and scale it
 X = [[num_floors_list[i], distance_between_floors[i], avg_time_between_arrivals[i], num_passengers[i]] for i in range(number_of_simulations)]
 X_scaled =  StandardScaler().fit_transform(X)
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, avg_total_waiting_time, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, avg_total_waiting_time, test_size=0.3, random_state=42)
 
 # Fit the model using the train data
 model = LinearRegression()
