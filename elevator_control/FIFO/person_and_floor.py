@@ -1,9 +1,10 @@
 class Person:
-    def __init__(self, mass, destination, floor, dummy_name):
+    def __init__(self, mass, destination, floor, dummy_name, arrival_time):
         self.mass = mass
         self.destination = destination
         self.initial_floor = floor
         self.dummy_name = dummy_name # This is for differentiation in the print statements
+        self.arrival_time = arrival_time
 
         # Arrival time, pickup time and destination time will be added in to measure avg trip times soon
         #self.arrival_time = arrival_time
