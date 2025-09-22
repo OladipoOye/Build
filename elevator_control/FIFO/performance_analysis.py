@@ -11,7 +11,7 @@ from sklearn.metrics import r2_score, mean_squared_error
 import random
 from main import Elevator_Simulation
 
-number_of_simulations = 50
+number_of_simulations = 500
 # Initialise the list for the x variables
 num_floors_list = [random.randint(2, 8) for i in range(number_of_simulations)]
 distance_between_floors = [random.randint(1, 10) for i in range(number_of_simulations)]
