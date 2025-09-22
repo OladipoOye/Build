@@ -8,16 +8,24 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import r2_score, mean_squared_error
 # import matplotlib.pyplot as plt
 # import seaborn as sn
-import random
 from main import Elevator_Simulation
+import numpy as np
 
 number_of_simulations = 500
 # Initialise the list for the x variables
-num_floors_list = [random.randint(2, 8) for i in range(number_of_simulations)]
-distance_between_floors = [random.randint(1, 10) for i in range(number_of_simulations)]
-max_arrrival_times = [random.randint(1, 50) for i in range(number_of_simulations)]
+linspace_floors = np.ceil(np.linspace(2, 8, number_of_simulations))
+num_floors_list = [int(i) for i in linspace_floors]
+
+linspace_distances = np.ceil(np.linspace(1, 10, number_of_simulations))
+distance_between_floors = [int(i) for i in linspace_distances]
+
+linspace_arrivals = np.ceil(np.linspace(1, 50, number_of_simulations))
+max_arrrival_times = [int(i) for i in linspace_arrivals]
+
 avg_time_between_arrivals = []
-num_passengers = [random.randint(1, 25) for i in range(number_of_simulations)]
+
+linspace_passengers = np.ceil(np.linspace(1, 25, number_of_simulations))
+num_passengers = [int(i) for i in linspace_passengers]
 
 # Initialise the list for the output
 avg_total_waiting_time = []
