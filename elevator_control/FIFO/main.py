@@ -1,18 +1,18 @@
 from elevator import Elevator
 from person_and_floor import Person, Floor
-import numpy as np
 import random
 
 # This is where the simulation will be run
-# The main function takes in a dictionary of people, and arrival times
-# These people will have randomized times and floors, and will all have a mass less than 100kg
+# The Elevator sim class is split into 2
+# The main function aims to provide an interactive, tracable simulation
+# The gather data function is a more time-effective implementation of the simulator for gathering data
 
 class Elevator_Simulation:
     def main(sim_time, dt, num_floors, num_ppl):
         
         # Generate the test data
-        # The mass is randomly generated, to be a value between 40 and 100
-        # The destination and floor is also randomly generated between the floor count (0 included)
+        # The person mass is randomly generated, to be a value between 40 and 100
+        # The destination and floor of each person is also randomly generated between the floor count (0 included)
         # The arrival list is the list of people which will queue
         arrival_list = [Person(mass=random.randint(40, 100), destination=random.randint(0,num_floors-1), floor=random.randint(0,num_floors-1), dummy_name=((i+1)*100), arrival_time=random.randint(0, 20)/10) for i in range(num_ppl)]
         

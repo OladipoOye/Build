@@ -24,7 +24,7 @@ max_arrrival_times = [int(i) for i in linspace_arrivals]
 
 avg_time_between_arrivals = []
 
-linspace_passengers = np.ceil(np.linspace(1, 25, number_of_simulations))
+linspace_passengers = np.ceil(np.linspace(4, 25, number_of_simulations))
 num_passengers = [int(i) for i in linspace_passengers]
 
 # Initialise the list for the output
@@ -44,13 +44,15 @@ for j in range(number_of_simulations):
     avg_time_between_arrivals.append(arrival_time_separation)
 
     # Sort the average total waiting time from the dictionary of arrival and journey completion times
-    waiting_times = [r[1]-r[0] for r in results.values()]
+    # Also removing the data for passengers which have a 0 waiting time (didn't take elevator)
+    waiting_times = [r[1]-r[0] for r in results.values() if ((r[1] - r[0]) > 0.5)]
     avg_total_waiting_time.append(sum(waiting_times)/len(waiting_times))
 
-# Create the results data, and scale it
+# Create the results data, and feature scale it using standardisation. After, split the data into 2, for testing and training
 X = [[num_floors_list[i], distance_between_floors[i], avg_time_between_arrivals[i], num_passengers[i]] for i in range(number_of_simulations)]
 X_scaled =  StandardScaler().fit_transform(X)
-X_train, X_test, y_train, y_test = train_test_split(X_scaled, avg_total_waiting_time, test_size=0.3, random_state=42)
+Y = avg_total_waiting_time
+X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.3, random_state=42)
 
 # Fit the model using the train data
 model = LinearRegression()
@@ -59,7 +61,8 @@ coefficients = model.coef_
 intercept = model.intercept_
 
 # Print the model coefficients and intercept
-print(f"Coefficients are: {coefficients}, with an intercept of {intercept}")
+coefficients_dict = {'number of floors': coefficients[0], 'distance between floors': coefficients[1], 'average time between arrivals': coefficients[2], 'number of passengers': coefficients[3], 'error/intercept': intercept}
+print(f"Coefficients are: {coefficients_dict}")
 
 # Build predictive y values using the model, in order to evaluate the model
 y_pred = model.predict(X_test)
