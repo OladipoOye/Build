@@ -163,4 +163,4 @@ class Elevator:
                     self.set_no_passengers_path()
                     self.move()
                 else:
-                    raise RuntimeError('elevator is moving despite no passengers in sight')
+                    raise RuntimeError('elevator is mid-floors despite no passengers in sight')
