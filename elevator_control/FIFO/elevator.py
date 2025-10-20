@@ -56,7 +56,9 @@ class Elevator:
             self.direction = 1 if nextfl>self.current_floor else -1
 
 
+        self.wait_count = 1 # Counter to implement stop
     def set_FIFO_path(self):
+        self.wait_count = 1 # Counter to implement stop
         # Sorts the destinations of the passengers, in this case, a first in first out structure is used
         self.direction = 1 if self.passengers[0].destination > self.current_floor else -1
     
