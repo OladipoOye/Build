@@ -1,4 +1,5 @@
 # This is my plots for example flows taken from examples paper 1 in the incompressible flow course
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -62,10 +63,10 @@ class FlowField:
 # question2_grid = Grid()
 # question2_grid.cartesian_mode(-5, 5, -5, 5)
 # question2_flow = FlowField(fluid='air')
-A = 1
+# A = 1
 # v_potential_equation2 = 0.5*A*question2_grid.X**2 - 0.5*A*question2_grid.Y**2
 # stream_function_equation2 = A*question2_grid.X*question2_grid.Y
-k = 10
+# k = 10
 # pressure_equation2 = k -0.5*question2_flow.rho*A*(question2_grid.X**2 + question2_grid.Y**2)
 
 # question2_grid.plot_contour(stream_function_equation2, 'Question 2 Stream Function', 'X-axis', 'Y-axis')
@@ -73,12 +74,23 @@ k = 10
 # question2_grid.plot_contour(pressure_equation2, 'Question 2 Pressure Field', 'X-axis', 'Y-axis')
 
 # question 3
-question3_grid = Grid()
-question3_grid.polar_mode(0, 10, 0, 5*np.pi/3)
-question3_flow = FlowField(fluid='air')
-stream_function_equation3 = A*(question3_grid.R**1.2)*np.sin(6*question3_grid.Theta/5)
+# question3_grid = Grid()
+# question3_grid.polar_mode(0, 10, 0, 5*np.pi/3)
+# question3_flow = FlowField(fluid='air')
+# stream_function_equation3 = A*(question3_grid.R**1.2)*np.sin(6*question3_grid.Theta/5)
 
 
-question3_grid.plot_contour(stream_function_equation3, 'Question 3 Stream Function', 'X-axis', 'Y-axis')
-pressure_equation3 = k - 0.5*question3_flow.rho*(1.2*A*question3_grid.R**0.2)**2
-question3_grid.plot_contour(pressure_equation3, 'Question 3 Pressure Field', 'X-axis', 'Y-axis')
+# question3_grid.plot_contour(stream_function_equation3, 'Question 3 Stream Function', 'X-axis', 'Y-axis')
+# pressure_equation3 = k - 0.5*question3_flow.rho*(1.2*A*question3_grid.R**0.2)**2
+# question3_grid.plot_contour(pressure_equation3, 'Question 3 Pressure Field', 'X-axis', 'Y-axis')
+
+
+# question 4
+question7_grid = Grid()
+question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
+question7_flow = FlowField(fluid='air')
+gamma = 2
+m = 2
+stream_function_equation7 = (0.5*m*question7_grid.Theta/np.pi) - (0.5*gamma/ np.pi)*np.log(question7_grid.R)
+
+question7_grid.plot_contour(stream_function_equation7, 'Question 7 streamfunction', 'X', 'Y')
