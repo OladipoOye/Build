@@ -86,11 +86,37 @@ class FlowField:
 
 
 # question 4
-question7_grid = Grid()
-question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
-question7_flow = FlowField(fluid='air')
-gamma = 2
-m = 2
-stream_function_equation7 = (0.5*m*question7_grid.Theta/np.pi) - (0.5*gamma/ np.pi)*np.log(question7_grid.R)
+# question7_grid = Grid()
+# question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
+# question7_flow = FlowField(fluid='air')
+# gamma = 2
+# m = 2
+# stream_function_equation7 = (0.5*m*question7_grid.Theta/np.pi) - (0.5*gamma/ np.pi)*np.log(question7_grid.R)
 
-question7_grid.plot_contour(stream_function_equation7, 'Question 7 streamfunction', 'X', 'Y')
+# question7_grid.plot_contour(stream_function_equation7, 'Question 7 streamfunction', 'X', 'Y')
+
+
+# question 16
+# question16_grid = Grid()
+# question16_grid.cartesian_mode(-5, 5, 0, 5)
+# U =10
+# h=0.2
+# m_list = [2*np.pi*U*h, 4*np.pi*U*h, np.pi*U*h]
+# Z_hat = (question16_grid.X + 1j*question16_grid.Y)/h
+# for val in m_list:
+#     stream_function_equation16 = Z_hat - (val/(2*np.pi*U*h) * (np.log(Z_hat**2 + 1) + 2*np.log(h)))
+#     question16_grid.plot_contour(stream_function_equation16, 'Question 16 streamfunction', 'X', 'Y')
+
+# question 17
+a = 1
+m = 2
+x = np.linspace(0, 5*a, 50)
+u = -(m/np.pi) * ( ((x - 2*a) / ((x - 2*a)**2 + a**2)) + ((x + 2*a) / ((x + 2*a)**2 + a**2)) )
+plt.figure()
+plt.plot(x, u, label='Question 17')
+plt.title('Question 17: velocity component u(x)')
+plt.xlabel('x')
+plt.ylabel('u')
+plt.grid(True)
+plt.legend()
+plt.show()
