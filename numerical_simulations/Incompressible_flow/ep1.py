@@ -86,7 +86,6 @@ class FlowField:
 
 
 # question 7
-# question 4
 # question7_grid = Grid()
 # question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
 # question7_flow = FlowField(fluid='air')
@@ -128,31 +127,67 @@ class FlowField:
 # plt.ylabel('Imaginary part')
 # plt.show()
 
-# visualiser for question 14
-x = np.arange(-3, 3, 0.1)
-=======
-
 # question 16
-# question16_grid = Grid()
-# question16_grid.cartesian_mode(-5, 5, 0, 5)
-# U =10
-# h=0.2
-# m_list = [2*np.pi*U*h, 4*np.pi*U*h, np.pi*U*h]
-# Z_hat = (question16_grid.X + 1j*question16_grid.Y)/h
-# for val in m_list:
-#     stream_function_equation16 = Z_hat - (val/(2*np.pi*U*h) * (np.log(Z_hat**2 + 1) + 2*np.log(h)))
-#     question16_grid.plot_contour(stream_function_equation16, 'Question 16 streamfunction', 'X', 'Y')
+# Question 18: Porous pipe in river flow
+# Complex potential: F = U*z - (m/(2π)) * ln(z - z_0)
+
+U = 1.0  # flow speed
+h = 0.2  # pipe height above bed
+a = 1.0  # half-pipe location (pipe at x=2a, y=h)
+
+# Three cases for m
+m_list = [2*np.pi*U*h, 4*np.pi*U*h, np.pi*U*h]
+
+# Grid in dimensionless coordinates
+x_range = np.linspace(-5, 5, 200)
+y_range = np.linspace(0, 5, 200)
+X, Y = np.meshgrid(x_range, y_range)
+Z = X + 1j*Y
+
+# Dimensionless coordinates
+Z_hat = Z / h
+# z_0_hat = (2*a + 1j*h) / h  # sink location in dimensionless coords
+
+for m in m_list:
+    # Dimensionless complex potential
+    F_hat = Z_hat - (m / (2 * np.pi * U * h)) * np.log(Z_hat**2 + 1) - (m / (2 * np.pi * U * h)) * np.log(h)
+    
+    # Streamfunction is imaginary part of F
+    psi = np.imag(F_hat)
+    
+    # Plot
+    fig, ax = plt.subplots(figsize=(8, 6))
+    
+    # Contour levels as specified in problem
+    levels = np.linspace(-2*np.pi, 4*np.pi, 31)
+    
+    cf = ax.contourf(X, Y, psi, levels=levels, cmap='RdBu_r', alpha=0.8)
+    cs = ax.contour(X, Y, psi, levels=levels, colors='k', linewidths=0.5, alpha=0.4)
+    
+    # Mark sink location
+    # ax.plot(2*a, h, 'rx', markersize=10, markeredgewidth=2, label='Sink')
+    
+    plt.colorbar(cf, ax=ax, label='ψ (streamfunction)')
+    plt.title(f'Question 18: Streamlines for m = {m/(np.pi*U*h):.2f}πUh')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.xlim(-5, 5)
+    plt.ylim(0, 5)
+    plt.grid(True, linestyle=':', alpha=0.5)
+    plt.legend()
+    plt.tight_layout()
+    plt.show()
 
 # question 17
-a = 1
-m = 2
-x = np.linspace(0, 5*a, 50)
-u = -(m/np.pi) * ( ((x - 2*a) / ((x - 2*a)**2 + a**2)) + ((x + 2*a) / ((x + 2*a)**2 + a**2)) )
-plt.figure()
-plt.plot(x, u, label='Question 17')
-plt.title('Question 17: velocity component u(x)')
-plt.xlabel('x')
-plt.ylabel('u')
-plt.grid(True)
-plt.legend()
-plt.show()
+# a = 1
+# m = 2
+# x = np.linspace(0, 5*a, 50)
+# u = -(m/np.pi) * ( ((x - 2*a) / ((x - 2*a)**2 + a**2)) + ((x + 2*a) / ((x + 2*a)**2 + a**2)) )
+# plt.figure()
+# plt.plot(x, u, label='Question 17')
+# plt.title('Question 17: velocity component u(x)')
+# plt.xlabel('x')
+# plt.ylabel('u')
+# plt.grid(True)
+# plt.legend()
+# plt.show()
