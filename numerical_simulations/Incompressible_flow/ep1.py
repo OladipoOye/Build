@@ -85,12 +85,47 @@ class FlowField:
 # question3_grid.plot_contour(pressure_equation3, 'Question 3 Pressure Field', 'X-axis', 'Y-axis')
 
 
-# question 4
-question7_grid = Grid()
-question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
-question7_flow = FlowField(fluid='air')
-gamma = 2
-m = 2
-stream_function_equation7 = (0.5*m*question7_grid.Theta/np.pi) - (0.5*gamma/ np.pi)*np.log(question7_grid.R)
+# question 7
+# question7_grid = Grid()
+# question7_grid.polar_mode(0.01, 10, 0, 2*np.pi)
+# question7_flow = FlowField(fluid='air')
+# gamma = 2
+# m = 2
+# stream_function_equation7 = (0.5*m*question7_grid.Theta/np.pi) - (0.5*gamma/ np.pi)*np.log(question7_grid.R)
 
-question7_grid.plot_contour(stream_function_equation7, 'Question 7 streamfunction', 'X', 'Y')
+# question7_grid.plot_contour(stream_function_equation7, 'Question 7 streamfunction', 'X', 'Y')
+
+# question 9
+# question9_grid = Grid()
+# question9_grid.polar_mode(0.01, 10, 0, 2*np.pi)
+# question9_flow = FlowField(fluid='air')
+# a = 1
+# alpha_list = [3, 2, 3/2, 2/3, 1/2]
+# for alpha in alpha_list:
+#     stream_function_equation9 = a*(question9_grid.R**alpha)*np.exp(1j*alpha*question9_grid.Theta)
+#     pressure_equation9 = -0.5*question9_flow.rho*((np.absolute(a*alpha*((question9_grid.X + 1j*question9_grid.Y)**(alpha-1))))**2)
+#     question9_grid.plot_contour(np.real(stream_function_equation9), f'Question 9 Streamfunction alpha={alpha}', 'X', 'Y')
+#     question9_grid.plot_contour(pressure_equation9, f'Question 9 Pressure Field alpha={alpha}', 'X', 'Y')
+# question9_grid.plot_contour(np.imag(stream_function_equation9), 'Question 9 Imaginary part of streamfunction', 'X', 'Y')
+
+# question 13 - create an array
+# phi_list = np.linspace(-3, 24, 51)
+# psi_list = np.linspace(-np.pi, np.pi, 21)
+# F_list = []
+# for phi in phi_list:
+#     for psi in psi_list:
+#         F = phi + 1j*psi
+#         F_list.append(F)
+
+# F_array = np.array(F_list)
+# z_array = F_array - (np.exp(-F_array))
+# z_array_2 = F_array
+# plt.plot(np.real(z_array), np.imag(z_array), 'o')
+# plt.plot(np.real(z_array_2), np.imag(z_array_2), 'x')
+# plt.title('Question 13 Conformal Mapping z = F - exp(-F)')
+# plt.xlabel('Real part')
+# plt.ylabel('Imaginary part')
+# plt.show()
+
+# visualiser for question 14
+x = np.arange(-3, 3, 0.1)
